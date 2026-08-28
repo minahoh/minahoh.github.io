@@ -1,357 +1,217 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Minah Oh's Webpage</title>
-    <style>
-      body {
-        position: relative;
-        top: -96px;
-      }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minah Oh | Mathematics</title>
+  <style>
+    :root {
+      --navy: #12355b;
+      --blue: #2d6a8f;
+      --ink: #243746;
+      --muted: #617482;
+      --paper: #fffdf9;
+      --wash: #eef5f7;
+      --coral: #d97962;
+      --line: #d7e3e6;
+    }
 
-      .site-nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin: 0 0 18px;
-      }
+    * { box-sizing: border-box; }
 
-      .site-nav a {
-        display: inline-block;
-        padding: 10px 18px;
-        border: 2px solid #12355b;
-        border-radius: 6px;
-        background: #eef3f8;
-        color: #12355b;
-        font-size: 20px;
-        font-weight: bold;
-        text-decoration: none;
-      }
+    body {
+      margin: 0;
+      background: var(--wash);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
 
-      .site-nav a:hover,
-      .site-nav a:focus {
-        background: #12355b;
-        color: white;
-      }
+    .page {
+      width: min(960px, calc(100% - 32px));
+      margin: 32px auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 32px rgba(18, 53, 91, 0.10);
+    }
 
-      .right-intro {
-        position: relative;
-        top: -30px;
-      }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 28px;
+      border-bottom: 1px solid var(--line);
+    }
 
-      td p:has(> br:only-child),
-      td p:empty,
-      td h5:empty,
-      td h5:has(> br:only-child),
-      td .content-end ~ * {
-        display: none;
-      }
+    .identity {
+      color: var(--navy);
+      font-family: "Apple Chancery", "Brush Script MT", cursive;
+      font-size: 38px;
+      font-style: italic;
+      font-weight: bold;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
 
-      @media (max-width: 700px) {
-        body {
-          top: 0;
-          overflow-x: hidden;
-        }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
 
-        table,
-        tbody,
-        tr,
-        td {
-          display: block;
-          width: 100% !important;
-          box-sizing: border-box;
-        }
+    nav a {
+      padding: 8px 13px;
+      border: 1px solid var(--navy);
+      border-radius: 5px;
+      color: var(--navy);
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 160ms ease, color 160ms ease;
+    }
 
-        .site-nav {
-          position: static !important;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 6px;
-          margin: 0 0 12px;
-        }
+    nav a:hover,
+    nav a:focus {
+      background: var(--navy);
+      color: white;
+    }
 
-        .site-nav a {
-          padding: 8px 10px;
-          font-size: 16px;
-        }
+    .content {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 30px;
+      padding: 34px 32px 42px;
+    }
 
-        td h1 {
-          margin-top: 0 !important;
-        }
+    aside { text-align: center; }
 
-        td h1 img {
-          position: static !important;
-          max-width: 100%;
-          height: auto;
-        }
+    aside img {
+      display: block;
+      width: 170px;
+      height: 225px;
+      margin: 0 auto 18px;
+      object-fit: cover;
+      border: 7px solid white;
+      outline: 1px solid var(--line);
+      box-shadow: 0 8px 18px rgba(18, 53, 91, 0.14);
+    }
 
-        td h2 {
-          position: static !important;
-          margin: 0 0 8px !important;
-          font-size: 28px !important;
-        }
+    aside h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 20px;
+    }
 
-        td h5,
-        .right-intro {
-          position: static !important;
-        }
+    aside p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-        td h5 {
-          width: 100% !important;
-        }
+    aside .mailing,
+    aside .email { margin-top: 18px; }
 
-        td h5 img {
-          max-width: 100%;
-          height: auto !important;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div style="text-align: left;">
-      <table style="width: 1345px;" border="1">
-        <tbody>
-          <tr>
-            <td style="width: 205.997px; text-align: center;">
-              <h2 style="position: relative; top: 95px; margin: 0 0 8px; color: #12355b; font-family: 'Apple Chancery', 'Brush Script MT', cursive; font-style: italic; font-weight: bold;">Minah Oh, Ph.D.</h2>
-              <h1 style="margin-top: 103px;"><img src="minah2.jpg" alt="" title="minah" width="225" style="position: relative; top: 1px;"></h1>
-              <h3><span style="width: 485.767px; text-align: center;"><span style="font-family: Apple Chancery;"><span
-                      style="color: maroon;">Professor of Mathematics<br>
-                      James Madison University<br>
-                      <br>
-                      mailing address: <br>
-                      Department of Mathematics and Statistics<br>
-                      305 Roop Hall MSC 1911 <br>
-                      James Madison University<br>
-                      Harrisonburg, VA 22807<br>
-                      <br>
-                      email address: <br>
-                      ohmx <i>at</i> jmu <i>dot </i>edu</span></span></span></h3>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-            </td>
-            <td style="width: 1009.77px;">
-              <nav class="site-nav" style="position: relative; top: -81px;" aria-label="Main navigation">
-                <a href="index.html">Home</a>
-                <a href="teaching.html">Teaching</a>
-                <a href="research.html">Research</a>
-                <a href="outreach.html">Outreach</a>
-                <a href="minahoh_cv.pdf">CV</a>
-              </nav>
-              <h5 style="position: relative; top: -55px; width: 100%;"><br>
-                <span style="width: 485.767px; text-align: center;"><span style="font-family: Apple Chancery;"><span
-                      style="color: maroon;"><img
-                        src="jmu.jpg"
-                        alt=""
-                        title="jmu"
-                        style="width: 285px; height: 204px;">&nbsp;
-                      </span></span></span><img src="arboretum.png" alt="" title="arboretum"
-                  style="width: 304px; height: 200px;">&nbsp;
-                <img src="shenandoahNationalPark.png" title="snp" style="width: 428px; height: 157px;"></h5>
-              <h3 class="right-intro">Welcome to my website! I am a mathematician specializing in
-                Numerical Analysis which is a branch of mathematics that uses
-                math to construct and analyze computer algorithms that can be
-                applied to meaningful real world problems. I have a passion for
-                involving undergraduate students in mathematical research
-                projects as well as providing quality education to them. I am
-                involved at the local and national level in helping young girls
-                and women to be successful in their education and career in
-                mathematics, and I also have a passion for popularizing
-                mathematics to the general public. Currently, I am the Mathematical Association of America 
-                Congress Representative for the Maryland-DC-Virginia Section.  </h3>
-                
-                
-              
-              <h3 class="content-end">
-                <meta charset="utf-8">
-                <span style="margin: 0px; padding: 0px; border: 0px; text-decoration: none; color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"></span>
-              </h3>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <br>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p style="text-align: center;"><b><br>
-                </b></p>
-              <p style="text-align: center;"><b><br>
-                </b></p>
-              <p style="text-align: right;"><br>
-              </p>
-              <br>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <h4 style="text-align: center;"></h4>
-              <h4></h4>
-              <h4>&nbsp;</h4>
-              <h5 style="width: 922px;"><br>
-              </h5>
-              <h5 style="width: 922px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; </h5>
-              <h5 style="width: 922px;"></h5>
-              <h5 style="width: 922px;"></h5>
-              <h5 style="width: 922px;"></h5>
-              <h5 style="width: 922px;"></h5>
-              <h5 style="width: 922px;"></h5>
-              <h5 style="width: 922px;"></h5>
-              <h5 style="width: 922px;"></h5>
-              <h5 style="width: 922px;"><span style="width: 485.767px; text-align: center;"><span
-                    style="font-family: Apple Chancery;"><span
-                      style="color: maroon;"></span></span></span></h5>
-              <h5>&nbsp;&nbsp;<span style="width: 485.767px; text-align: center;"><span
-                    style="font-family: Apple Chancery;"><span
-                      style="color: maroon;">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <br></span></span></span></h5>
-              <h5><br>
-              </h5>
-              <h5><br>
-              </h5>
-              <h5><br>
-              </h5>
-              <h5><span style="width: 485.767px; text-align: center;"><span style="font-family: Apple Chancery;"><span
-                      style="color: maroon;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <br></span></span></span></h5>
-              <h5><span style="width: 485.767px; text-align: center;"><span style="font-family: Apple Chancery;"><span
-                      style="color: maroon;"></span></span></span></h5>
-              <h5><span style="width: 485.767px; text-align: center;"><span style="font-family: Apple Chancery;"><span
-                      style="color: maroon;"></span></span></span></h5>
-              <h5><span style="width: 485.767px; text-align: center;"><span style="font-family: Apple Chancery;"><span
-                      style="color: maroon;"></span></span></span></h5>
-              <h5><span style="width: 485.767px; text-align: center;"><span style="font-family: Apple Chancery;"><span
-                      style="color: maroon;"></span></span></span></h5>
-              <br>
-              <p><br>
-              </p>
-              <h5><span style="width: 485.767px; text-align: center;"><span style="font-family: Apple Chancery;"><span
-                      style="color: maroon;"></span></span></span></h5>
-              <p></p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              <p><br>
-              </p>
-              &nbsp;</td>
-          </tr>
-        </tbody>
-      </table>
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .gallery img {
+      display: block;
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 4px;
+      outline: 1px solid var(--line);
+    }
+
+    .intro {
+      max-width: 760px;
+      font-size: 18px;
+    }
+
+    .welcome {
+      margin: 0 0 22px;
+      color: var(--blue);
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 16px;
+      background: var(--blue);
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      padding: 16px 34px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .page { width: min(100% - 20px, 620px); margin: 10px auto; }
+      header { display: block; padding: 22px; }
+      .identity { margin-bottom: 18px; font-size: 34px; }
+      nav { justify-content: flex-start; }
+      .content { display: block; padding: 30px 22px 36px; }
+      aside { margin-bottom: 34px; }
+      .gallery { grid-template-columns: 1fr; }
+      .gallery img { height: 190px; }
+      .intro { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="identity">Minah Oh</div>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="research.html">Research</a>
+        <a href="outreach.html">Outreach</a>
+      </nav>
+    </header>
+
+    <div class="content">
+      <aside>
+        <img src="minah2.jpg" alt="Portrait of Minah Oh">
+        <h2>Minah Oh, Ph.D.</h2>
+        <p>Professor of Mathematics<br>
+          James Madison University</p>
+        <p class="mailing">Mailing address:<br>
+          Department of Mathematics and Statistics<br>
+          305 Roop Hall MSC 1911<br>
+          James Madison University<br>
+          Harrisonburg, VA 22807</p>
+        <p class="email">Email:<br>
+          ohmx (at) jmu (dot) edu</p>
+      </aside>
+
+      <main class="main">
+        <div class="gallery" aria-label="Places connected with James Madison University">
+          <img src="jmu.jpg" alt="James Madison University">
+          <img src="arboretum.png" alt="JMU Arboretum">
+          <img src="shenandoahNationalPark.png" alt="Shenandoah National Park">
+        </div>
+        <section class="intro">
+          <p class="welcome">Welcome to my website!</p>
+          <p>I am a mathematician specializing in Numerical Analysis, a branch of mathematics that uses math to construct and analyze computer algorithms for meaningful real-world problems. I enjoy involving undergraduate students in mathematical research, providing quality education, supporting young women in mathematics, and sharing mathematics with the public. I have a passion for involving undergraduate students in mathematical research projects as well as providing quality education to them.</p>
+          <p>I am involved at the local and national level in helping young girls and women to be successful in their education and career in mathematics, and I also have a passion for popularizing mathematics to the general public. Currently, I am the Mathematical Association of America Congress Representative for the Maryland-DC-Virginia Section.</p>
+          <a class="button" href="minahoh_cv.pdf">View my CV</a>
+        </section>
+      </main>
     </div>
-  </body>
+
+    <footer>Mathematics and Statistics · James Madison University</footer>
+  </div>
+</body>
 </html>
