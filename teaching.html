@@ -5,167 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Teaching | Minah Oh</title>
   <style>
-    :root {
-      --navy: #12355b;
-      --blue: #2d6a8f;
-      --ink: #243746;
-      --muted: #617482;
-      --paper: #fffdf9;
-      --wash: #eef5f7;
-      --line: #d7e3e6;
-      --softblue: #edf5f9;
-      --softrose: #f7f0ef;
-    }
-
-    * { box-sizing: border-box; }
-
     body {
-      margin: 0;
-      background: var(--wash);
-      color: var(--ink);
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.65;
+      margin: 40px auto;
+      max-width: 900px;
+      font-family: Georgia, serif;
+      color: #333;
+      line-height: 1.6;
     }
 
-    .page {
-      width: min(960px, calc(100% - 32px));
-      margin: 32px auto;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      box-shadow: 0 12px 32px rgba(18, 53, 91, 0.10);
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 22px 28px;
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(180deg, #fffefc 0%, #fbf9f4 100%);
-    }
-
-    .identity {
-      color: var(--navy);
-      font-family: "Apple Chancery", "Brush Script MT", cursive;
-      font-size: 38px;
-      font-style: italic;
-      font-weight: bold;
-      line-height: 1.1;
-      white-space: nowrap;
-    }
-
-    nav {
+    .site-nav {
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 8px;
+      gap: 10px;
+      margin-bottom: 32px;
     }
 
-    nav a {
-      padding: 8px 13px;
-      border: 1px solid var(--navy);
-      border-radius: 5px;
-      color: var(--navy);
-      background: transparent;
-      font-size: 15px;
+    .site-nav a {
+      display: inline-block;
+      padding: 10px 18px;
+      border: 2px solid #12355b;
+      border-radius: 6px;
+      background: #eef3f8;
+      color: #12355b;
+      font-size: 20px;
+      font-weight: bold;
       text-decoration: none;
-      transition: background 160ms ease, color 160ms ease, transform 160ms ease;
     }
 
-    nav a:hover,
-    nav a:focus,
-    nav a[aria-current="page"] {
-      background: var(--navy);
+    .site-nav a:hover,
+    .site-nav a:focus {
+      background: #12355b;
       color: white;
-      transform: translateY(-1px);
-    }
-
-    .content {
-      padding: 34px 32px 42px;
     }
 
     h1 {
+      color: maroon;
+      font-size: 32px;
       margin: 0 0 20px;
-      color: var(--navy);
-      font-size: clamp(2.4rem, 4vw, 3.2rem);
-      line-height: 1.15;
-      letter-spacing: -0.05em;
-    }
-
-    .panel {
-      padding: 26px 26px 10px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: linear-gradient(180deg, #ffffff 0%, #f9fbfc 100%);
-    }
-
-    .section-label {
-      display: inline-block;
-      margin-bottom: 14px;
-      color: #8d6a6b;
-      font-size: 1.4rem;
       font-weight: bold;
-      letter-spacing: 0.02em;
     }
 
-    .course-list {
-      display: grid;
-      gap: 12px;
-      margin: 0 0 10px;
-      padding: 0;
-      list-style: none;
-    }
-
-    .course-item {
-      display: flex;
-      align-items: center;
-      padding: 14px 16px;
-      border: 1px solid #ead7dc;
-      border-left: 6px solid #c77d8f;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #fffdfd 0%, #fdf3f5 100%);
-      color: #5a3f4d;
-      font-size: 1.04rem;
-      font-weight: 700;
-      box-shadow: 0 2px 8px rgba(183, 107, 126, 0.05);
-    }
-
-    .course-item::before {
-      content: "✦";
-      margin-right: 12px;
-      color: #b66a7a;
-      font-size: 1.1rem;
-      line-height: 1;
-    }
-
-    .note {
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    .video-section {
-      margin-top: 28px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-    }
-
-    .video-group {
+    .section {
       margin-top: 20px;
     }
 
-    .video-label {
-      margin: 0 0 12px;
-      color: var(--navy);
+    .section-title {
+      font-size: 18pt;
       font-weight: bold;
-      font-size: 1.3rem;
+      color: #b26d7c;
+      margin: 0 0 12px;
+    }
+
+    .course-item {
+      font-size: 14pt;
+      font-weight: bold;
+      color: #12355b;
+      margin: 8px 0;
+    }
+
+    .note {
+      font-style: italic;
+      color: #12355b;
+      margin: 12px 0 24px;
+    }
+
+    .video-group {
+      margin-top: 18px;
+    }
+
+    .video-label {
+      font-size: 14pt;
+      font-weight: bold;
+      color: #12355b;
+      margin: 0 0 12px;
     }
 
     .video-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .video-card {
@@ -174,14 +92,15 @@
       align-items: center;
       gap: 10px;
       padding: 10px 14px 10px 12px;
-      border: 1px solid var(--line);
+      border: 1px solid #d8e1ea;
       border-radius: 10px;
-      background: linear-gradient(180deg, #ffffff 0%, var(--softblue) 100%);
-      color: var(--navy);
-      text-decoration: none;
+      background: #f6f9fc;
+      color: #12355b;
       font-size: 0.95rem;
       font-weight: 700;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(18, 53, 91, 0.04);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .video-card::before {
@@ -190,8 +109,7 @@
       width: 22px;
       height: 22px;
       border-radius: 7px;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+      background: linear-gradient(135deg, #12355b 0%, #2d6a8f 100%);
     }
 
     .video-card::after {
@@ -200,88 +118,64 @@
       left: 18px;
       top: 50%;
       transform: translateY(-50%);
-      color: #fff;
+      color: white;
       font-size: 0.62rem;
       line-height: 1;
-      text-shadow: 0 1px 1px rgba(0,0,0,0.15);
     }
 
     .video-card:hover,
     .video-card:focus {
       transform: translateY(-2px);
-      border-color: #bfd5e2;
-      box-shadow: 0 10px 22px rgba(18, 53, 91, 0.08);
+      box-shadow: 0 8px 16px rgba(18, 53, 91, 0.08);
     }
 
-    footer {
-      padding: 16px 34px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-      text-align: center;
-      background: #f7f9fa;
-    }
-
-    @media (max-width: 760px) {
-      .page { width: min(100% - 20px, 620px); margin: 10px auto; }
-      header { display: block; padding: 22px; }
-      .identity { margin-bottom: 18px; font-size: 34px; }
-      nav { justify-content: flex-start; }
-      .content { padding: 24px 18px 30px; }
-      .panel { padding: 18px 16px 8px; }
-      .video-card { width: 100%; justify-content: flex-start; }
+    @media (max-width: 640px) {
+      body { padding: 0 12px; }
+      .site-nav a { font-size: 15px; }
+      .video-card { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="identity">Minah Oh</div>
-      <nav aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="teaching.html" aria-current="page">Teaching</a>
-        <a href="research.html">Research</a>
-        <a href="outreach.html">Outreach</a>
-        <a href="cv.html">CV</a>
-      </nav>
-    </header>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="research.html">Research</a>
+    <a href="outreach.html">Outreach</a>
+    <a href="cv.html">CV</a>
+  </nav>
 
-    <main class="content">
-      <section class="panel">
-        <h1>Teaching</h1>
+  <main>
+    <h1>Teaching</h1>
 
-        <div class="section-label">Fall 2026</div>
-        <ul class="course-list">
-          <li class="course-item">MATH 103 Nature of Mathematics (or Joy of Mathematics)</li>
-          <li class="course-item">MATH 336 Differential Equations</li>
-        </ul>
-        <p class="note">Course material available on canvas.</p>
+    <div class="section">
+      <div class="section-title">Fall 2026</div>
+      <div class="course-item">MATH 103 Nature of Mathematics (or Joy of Mathematics)</div>
+      <div class="course-item">MATH 336 Differential Equations</div>
+      <div class="note">Course material available on canvas.</div>
+    </div>
 
-        <div class="video-section">
-          <div class="section-label">Lecture Videos</div>
+    <div class="section" style="margin-top: 48px;">
+      <div class="section-title">Lecture Videos</div>
 
-          <div class="video-group">
-            <div class="video-label">Integration Techniques Review</div>
-            <div class="video-grid">
-              <a class="video-card" href="https://drive.google.com/file/d/1P4WfZ_p6KVzXuz-PdgEGtWDxcI554IM6/view?usp=sharing">Integration by Parts</a>
-              <a class="video-card" href="https://drive.google.com/file/d/1V457TIW6vTsgyLSZKU2F2GJOT9fd08j7/view?usp=sharing">Trigonometric Integrals Part I</a>
-              <a class="video-card" href="https://drive.google.com/file/d/116K19EDcodppFV81mv7KE8S2cHEOxjsN/view?usp=sharing">Trigonometric Integrals Part II</a>
-              <a class="video-card" href="https://drive.google.com/file/d/17Yg2TkYMF9GsPVejx9Dx8-GQ967JRJR7/view?usp=sharing">Trigonometric Substitution</a>
-              <a class="video-card" href="https://drive.google.com/file/d/1iX8HhEO2YMpWfI0HcG1vU47FRRp65cXI/view?usp=sharing">Partial Fractions</a>
-            </div>
-          </div>
-
-          <div class="video-group">
-            <div class="video-label">Fun Math and Coding for Everyone</div>
-            <div class="video-grid">
-              <a class="video-card" href="https://drive.google.com/file/d/17sWPzi92Gcpoz1kpyavGUH8-3XfHPn8B/view?usp=sharing">Card Trick: Guessing the 5th Card</a>
-            </div>
-          </div>
+      <div class="video-group">
+        <div class="video-label">Integration Techniques Review</div>
+        <div class="video-grid">
+          <a class="video-card" href="https://drive.google.com/file/d/1P4WfZ_p6KVzXuz-PdgEGtWDxcI554IM6/view?usp=sharing">Integration by Parts</a>
+          <a class="video-card" href="https://drive.google.com/file/d/1V457TIW6vTsgyLSZKU2F2GJOT9fd08j7/view?usp=sharing">Trigonometric Integrals Part I</a>
+          <a class="video-card" href="https://drive.google.com/file/d/116K19EDcodppFV81mv7KE8S2cHEOxjsN/view?usp=sharing">Trigonometric Integrals Part II</a>
+          <a class="video-card" href="https://drive.google.com/file/d/17Yg2TkYMF9GsPVejx9Dx8-GQ967JRJR7/view?usp=sharing">Trigonometric Substitution</a>
+          <a class="video-card" href="https://drive.google.com/file/d/1iX8HhEO2YMpWfI0HcG1vU47FRRp65cXI/view?usp=sharing">Partial Fractions</a>
         </div>
-      </section>
-    </main>
+      </div>
 
-    <footer>Mathematics and Statistics · James Madison University</footer>
-  </div>
+      <div class="video-group" style="margin-top: 36px;">
+        <div class="video-label">Fun Math and Coding for Everyone</div>
+        <div class="video-grid">
+          <a class="video-card" href="https://drive.google.com/file/d/17sWPzi92Gcpoz1kpyavGUH8-3XfHPn8B/view?usp=sharing">Card Trick: Guessing the 5th Card</a>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
