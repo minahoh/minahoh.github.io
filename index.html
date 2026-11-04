@@ -167,6 +167,16 @@
       .gallery img { height: 190px; }
       .intro { font-size: 17px; }
     }
+
+    @media (max-width: 640px) {
+      nav { display: grid; grid-template-columns: repeat(6, 1fr); }
+      nav a { padding: 8px 4px; text-align: center; }
+      nav .nav-home { grid-area: 1 / 1 / 2 / 4; }
+      nav .nav-cv { grid-area: 1 / 4 / 2 / 7; }
+      nav .nav-teaching { grid-area: 2 / 1 / 3 / 3; }
+      nav .nav-research { grid-area: 2 / 3 / 3 / 5; }
+      nav .nav-outreach { grid-area: 2 / 5 / 3 / 7; }
+    }
   </style>
 </head>
 <body>
@@ -174,10 +184,11 @@
     <header>
       <div class="identity">Minah Oh</div>
       <nav aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="teaching.html">Teaching</a>
-        <a href="research.html">Research</a>
-        <a href="outreach.html">Outreach</a>
+        <a class="nav-home" href="index.html">Home</a>
+        <a class="nav-teaching" href="teaching.html">Teaching</a>
+        <a class="nav-research" href="research.html">Research</a>
+        <a class="nav-outreach" href="outreach.html">Outreach</a>
+        <a class="nav-cv" href="cv.html">CV</a>
       </nav>
     </header>
 
