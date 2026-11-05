@@ -4,182 +4,99 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Teaching | Minah Oh</title>
-  <style>
-    body {
-      margin: 40px auto;
-      max-width: 900px;
-      font-family: Georgia, serif;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    .site-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 32px;
-    }
-
-    .site-nav a {
-      padding: 8px 13px;
-      border: 1px solid #12355b;
-      border-radius: 5px;
-      color: #12355b;
-      font-size: 15px;
-      text-decoration: none;
-      transition: background 160ms ease, color 160ms ease;
-    }
-
-    .site-nav a:hover,
-    .site-nav a:focus {
-      background: #12355b;
-      color: white;
-    }
-
-    h1 {
-      color: maroon;
-      font-size: 32px;
-      margin: 0 0 20px;
-      font-weight: bold;
-    }
-
-    .section {
-      margin-top: 20px;
-    }
-
-    .section-title {
-      font-size: 18pt;
-      font-weight: bold;
-      color: #b26d7c;
-      margin: 0 0 12px;
-    }
-
-    .course-item {
-      font-size: 14pt;
-      font-weight: bold;
-      color: #12355b;
-      margin: 8px 0;
-    }
-
-    .note {
-      font-style: italic;
-      color: #12355b;
-      margin: 12px 0 24px;
-    }
-
-    .video-group {
-      margin-top: 18px;
-    }
-
-    .video-label {
-      font-size: 14pt;
-      font-weight: bold;
-      color: #12355b;
-      margin: 0 0 12px;
-    }
-
-    .video-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .video-card {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px 10px 12px;
-      border: 1px solid #d8e1ea;
-      border-radius: 10px;
-      background: #f6f9fc;
-      color: #12355b;
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 2px 6px rgba(18, 53, 91, 0.04);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .video-card::before {
-      content: "";
-      display: inline-block;
-      width: 22px;
-      height: 22px;
-      border-radius: 7px;
-      background: linear-gradient(135deg, #12355b 0%, #2d6a8f 100%);
-    }
-
-    .video-card::after {
-      content: "▶";
-      position: absolute;
-      left: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-      font-size: 0.62rem;
-      line-height: 1;
-    }
-
-    .video-card:hover,
-    .video-card:focus {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(18, 53, 91, 0.08);
-    }
-
-    @media (max-width: 640px) {
-      body { padding: 0 12px; }
-      .site-nav { display: grid; grid-template-columns: repeat(6, 1fr); }
-      .site-nav a { padding: 8px 4px; text-align: center; }
-      .site-nav .nav-home { grid-area: 1 / 1 / 2 / 4; }
-      .site-nav .nav-cv { grid-area: 1 / 4 / 2 / 7; }
-      .site-nav .nav-teaching { grid-area: 2 / 1 / 3 / 3; }
-      .site-nav .nav-research { grid-area: 2 / 3 / 3 / 5; }
-      .site-nav .nav-outreach { grid-area: 2 / 5 / 3 / 7; }
-      .video-card { width: 100%; }
-    }
-  </style>
+  <meta name="theme-color" content="#12355B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Inter:wght@400..600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="site-nav" aria-label="Main navigation">
-    <a class="nav-home" href="index.html">Home</a>
-    <a class="nav-teaching" href="teaching.html">Teaching</a>
-    <a class="nav-research" href="research.html">Research</a>
-    <a class="nav-outreach" href="outreach.html">Outreach</a>
-    <a class="nav-cv" href="cv.html">CV</a>
-  </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <main>
-    <h1>Teaching</h1>
-
-    <div class="section">
-      <div class="section-title">Fall 2026</div>
-      <div class="course-item">MATH 103 Nature of Mathematics (or Joy of Mathematics)</div>
-      <div class="course-item">MATH 336 Differential Equations</div>
-      <div class="note">Course material available on canvas.</div>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">Minah Oh</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="teaching.html" aria-current="page">Teaching</a>
+        <a href="research.html">Research</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="cv.html">CV</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="section" style="margin-top: 48px;">
-      <div class="section-title">Lecture Videos</div>
+  <main id="main">
+    <section class="band page-head">
+      <div class="wrap">
+        <h1>Teaching</h1>
+      </div>
+    </section>
 
-      <div class="video-group">
-        <div class="video-label">Integration Techniques Review</div>
+    <section class="section">
+      <div class="wrap">
+        <h2 class="section-title">Fall 2026</h2>
+        <div class="course-grid">
+          <article class="card course-card">
+            <span class="course-code">MATH 103</span>
+            <h3>Nature of Mathematics (or Joy of Mathematics)</h3>
+          </article>
+          <article class="card course-card">
+            <span class="course-code">MATH 336</span>
+            <h3>Differential Equations</h3>
+          </article>
+        </div>
+        <p class="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5A1.5 1.5 0 0 1 4.5 4H9a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5h-5A1.5 1.5 0 0 1 3 16z"/><path d="M21 5.5A1.5 1.5 0 0 0 19.5 4H15a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5h5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>
+          Course material available on canvas.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="section-title">Lecture Videos</h2>
+
+        <h3 class="subsection-title">Integration Techniques Review</h3>
         <div class="video-grid">
-          <a class="video-card" href="https://drive.google.com/file/d/1P4WfZ_p6KVzXuz-PdgEGtWDxcI554IM6/view?usp=sharing">Integration by Parts</a>
-          <a class="video-card" href="https://drive.google.com/file/d/1V457TIW6vTsgyLSZKU2F2GJOT9fd08j7/view?usp=sharing">Trigonometric Integrals Part I</a>
-          <a class="video-card" href="https://drive.google.com/file/d/116K19EDcodppFV81mv7KE8S2cHEOxjsN/view?usp=sharing">Trigonometric Integrals Part II</a>
-          <a class="video-card" href="https://drive.google.com/file/d/17Yg2TkYMF9GsPVejx9Dx8-GQ967JRJR7/view?usp=sharing">Trigonometric Substitution</a>
-          <a class="video-card" href="https://drive.google.com/file/d/1iX8HhEO2YMpWfI0HcG1vU47FRRp65cXI/view?usp=sharing">Partial Fractions</a>
+          <a class="card video-card" href="https://drive.google.com/file/d/1P4WfZ_p6KVzXuz-PdgEGtWDxcI554IM6/view?usp=sharing">
+            <span class="video-thumb"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8v14.4a.8.8 0 0 0 1.2.7l11.4-7.2a.8.8 0 0 0 0-1.4L8.2 4.1A.8.8 0 0 0 7 4.8z"/></svg></span></span>
+            <span class="video-title">Integration by Parts</span>
+          </a>
+          <a class="card video-card" href="https://drive.google.com/file/d/1V457TIW6vTsgyLSZKU2F2GJOT9fd08j7/view?usp=sharing">
+            <span class="video-thumb"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8v14.4a.8.8 0 0 0 1.2.7l11.4-7.2a.8.8 0 0 0 0-1.4L8.2 4.1A.8.8 0 0 0 7 4.8z"/></svg></span></span>
+            <span class="video-title">Trigonometric Integrals Part I</span>
+          </a>
+          <a class="card video-card" href="https://drive.google.com/file/d/116K19EDcodppFV81mv7KE8S2cHEOxjsN/view?usp=sharing">
+            <span class="video-thumb"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8v14.4a.8.8 0 0 0 1.2.7l11.4-7.2a.8.8 0 0 0 0-1.4L8.2 4.1A.8.8 0 0 0 7 4.8z"/></svg></span></span>
+            <span class="video-title">Trigonometric Integrals Part II</span>
+          </a>
+          <a class="card video-card" href="https://drive.google.com/file/d/17Yg2TkYMF9GsPVejx9Dx8-GQ967JRJR7/view?usp=sharing">
+            <span class="video-thumb"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8v14.4a.8.8 0 0 0 1.2.7l11.4-7.2a.8.8 0 0 0 0-1.4L8.2 4.1A.8.8 0 0 0 7 4.8z"/></svg></span></span>
+            <span class="video-title">Trigonometric Substitution</span>
+          </a>
+          <a class="card video-card" href="https://drive.google.com/file/d/1iX8HhEO2YMpWfI0HcG1vU47FRRp65cXI/view?usp=sharing">
+            <span class="video-thumb"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8v14.4a.8.8 0 0 0 1.2.7l11.4-7.2a.8.8 0 0 0 0-1.4L8.2 4.1A.8.8 0 0 0 7 4.8z"/></svg></span></span>
+            <span class="video-title">Partial Fractions</span>
+          </a>
+        </div>
+
+        <h3 class="subsection-title">Fun Math and Coding for Everyone</h3>
+        <div class="video-grid">
+          <a class="card video-card" href="https://drive.google.com/file/d/17sWPzi92Gcpoz1kpyavGUH8-3XfHPn8B/view?usp=sharing">
+            <span class="video-thumb"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8v14.4a.8.8 0 0 0 1.2.7l11.4-7.2a.8.8 0 0 0 0-1.4L8.2 4.1A.8.8 0 0 0 7 4.8z"/></svg></span></span>
+            <span class="video-title">Card Trick: Guessing the 5th Card</span>
+          </a>
         </div>
       </div>
-
-      <div class="video-group" style="margin-top: 36px;">
-        <div class="video-label">Fun Math and Coding for Everyone</div>
-        <div class="video-grid">
-          <a class="video-card" href="https://drive.google.com/file/d/17sWPzi92Gcpoz1kpyavGUH8-3XfHPn8B/view?usp=sharing">Card Trick: Guessing the 5th Card</a>
-        </div>
-      </div>
-    </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span class="footer-name">Minah Oh</span>
+      <span>Mathematics and Statistics · James Madison University</span>
+    </div>
+  </footer>
 </body>
 </html>

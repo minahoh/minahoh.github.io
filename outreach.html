@@ -4,103 +4,55 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Outreach | Minah Oh</title>
-  <style>
-    body {
-      margin: 40px auto;
-      max-width: 900px;
-      font-family: Georgia, serif;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    .site-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 32px;
-    }
-
-    .site-nav a {
-      padding: 8px 13px;
-      border: 1px solid #12355b;
-      border-radius: 5px;
-      color: #12355b;
-      font-size: 15px;
-      text-decoration: none;
-      transition: background 160ms ease, color 160ms ease;
-    }
-
-    .site-nav a:hover,
-    .site-nav a:focus {
-      background: #12355b;
-      color: white;
-    }
-
-    h1 {
-      color: maroon;
-      font-size: 32px;
-      margin: 0 0 20px;
-      font-weight: bold;
-    }
-
-    .section {
-      margin-top: 20px;
-    }
-
-    .outreach-item {
-      padding: 16px 22px;
-      border: 1px solid #d8e1ea;
-      border-radius: 10px;
-      background: #f6f9fc;
-      box-shadow: 0 2px 6px rgba(18, 53, 91, 0.04);
-    }
-
-    .outreach-item + .outreach-item {
-      margin-top: 16px;
-    }
-
-    .item-title {
-      font-size: 14pt;
-      font-weight: bold;
-      color: #12355b;
-      margin: 0;
-    }
-
-    .item-desc {
-      font-size: 13pt;
-      margin: 6px 0 0;
-    }
-
-    @media (max-width: 640px) {
-      body { padding: 0 12px; }
-      .site-nav { display: grid; grid-template-columns: repeat(6, 1fr); }
-      .site-nav a { padding: 8px 4px; text-align: center; }
-      .site-nav .nav-home { grid-area: 1 / 1 / 2 / 4; }
-      .site-nav .nav-cv { grid-area: 1 / 4 / 2 / 7; }
-      .site-nav .nav-teaching { grid-area: 2 / 1 / 3 / 3; }
-      .site-nav .nav-research { grid-area: 2 / 3 / 3 / 5; }
-      .site-nav .nav-outreach { grid-area: 2 / 5 / 3 / 7; }
-      .outreach-item { padding: 14px 16px; }
-    }
-  </style>
+  <meta name="theme-color" content="#12355B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Inter:wght@400..600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="site-nav" aria-label="Main navigation">
-    <a class="nav-home" href="index.html">Home</a>
-    <a class="nav-teaching" href="teaching.html">Teaching</a>
-    <a class="nav-research" href="research.html">Research</a>
-    <a class="nav-outreach" href="outreach.html">Outreach</a>
-    <a class="nav-cv" href="cv.html">CV</a>
-  </nav>
-  <main>
-    <h1>Outreach</h1>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <div class="section">
-      <div class="outreach-item">
-        <div class="item-title">Girls' Math and Coding Day at JMU</div>
-        <p class="item-desc">Dr. Oh is the creator and organizer of this annual outreach event for students in the Harrisonburg City Public Schools Advancement Via Individual Determination (AVID) program. Since 2020, approximately 30 students have been attending this outreach event each year, where they take part in a Python programming workshop and go to talks by female students and faculty at JMU.</p>
-      </div>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">Minah Oh</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="research.html">Research</a>
+        <a href="outreach.html" aria-current="page">Outreach</a>
+        <a href="cv.html">CV</a>
+      </nav>
     </div>
+  </header>
+
+  <main id="main">
+    <section class="band page-head">
+      <div class="wrap">
+        <h1>Outreach</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <article class="card feature">
+          <h2>Girls' Math and Coding Day at JMU</h2>
+          <p>Dr. Oh is the creator and organizer of this annual outreach event for students in the Harrisonburg City Public Schools Advancement Via Individual Determination (AVID) program. Since 2020, approximately 30 students have been attending this outreach event each year, where they take part in a Python programming workshop and go to talks by female students and faculty at JMU.</p>
+          <ul class="facts">
+            <li><span class="fact-value">Since 2020</span><span class="fact-label">Held every year</span></li>
+            <li><span class="fact-value">Approx. 30</span><span class="fact-label">Students each year</span></li>
+            <li><span class="fact-value">Python</span><span class="fact-label">Programming workshop</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span class="footer-name">Minah Oh</span>
+      <span>Mathematics and Statistics · James Madison University</span>
+    </div>
+  </footer>
 </body>
 </html>

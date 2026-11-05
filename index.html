@@ -4,225 +4,105 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Minah Oh | Mathematics</title>
-  <style>
-    :root {
-      --navy: #12355b;
-      --blue: #2d6a8f;
-      --ink: #243746;
-      --muted: #617482;
-      --paper: #fffdf9;
-      --wash: #eef5f7;
-      --coral: #d97962;
-      --line: #d7e3e6;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--wash);
-      color: var(--ink);
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.65;
-    }
-
-    .page {
-      width: min(960px, calc(100% - 32px));
-      margin: 32px auto;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      box-shadow: 0 12px 32px rgba(18, 53, 91, 0.10);
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 22px 28px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .identity {
-      color: var(--navy);
-      font-family: "Apple Chancery", "Brush Script MT", cursive;
-      font-size: 38px;
-      font-style: italic;
-      font-weight: bold;
-      line-height: 1.1;
-      white-space: nowrap;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 8px;
-    }
-
-    nav a {
-      padding: 8px 13px;
-      border: 1px solid var(--navy);
-      border-radius: 5px;
-      color: var(--navy);
-      font-size: 15px;
-      text-decoration: none;
-      transition: background 160ms ease, color 160ms ease;
-    }
-
-    nav a:hover,
-    nav a:focus {
-      background: var(--navy);
-      color: white;
-    }
-
-    .content {
-      display: grid;
-      grid-template-columns: 190px 1fr;
-      gap: 30px;
-      padding: 34px 32px 42px;
-    }
-
-    aside { text-align: center; }
-
-    aside img {
-      display: block;
-      width: 170px;
-      height: 225px;
-      margin: 0 auto 18px;
-      object-fit: cover;
-      border: 7px solid white;
-      outline: 1px solid var(--line);
-      box-shadow: 0 8px 18px rgba(18, 53, 91, 0.14);
-    }
-
-    aside h2 {
-      margin: 0;
-      color: var(--navy);
-      font-size: 20px;
-    }
-
-    aside p {
-      margin: 6px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    aside .mailing,
-    aside .email { margin-top: 18px; }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .gallery img {
-      display: block;
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 4px;
-      outline: 1px solid var(--line);
-    }
-
-    .intro {
-      max-width: 760px;
-      font-size: 18px;
-    }
-
-    .welcome {
-      margin: 0 0 22px;
-      color: var(--blue);
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 16px;
-      background: var(--blue);
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    footer {
-      padding: 16px 34px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-      text-align: center;
-    }
-
-    @media (max-width: 760px) {
-      .page { width: min(100% - 20px, 620px); margin: 10px auto; }
-      header { display: block; padding: 22px; }
-      .identity { margin-bottom: 18px; font-size: 34px; }
-      nav { justify-content: flex-start; }
-      .content { display: block; padding: 30px 22px 36px; }
-      aside { margin-bottom: 34px; }
-      .gallery { grid-template-columns: 1fr; }
-      .gallery img { height: 190px; }
-      .intro { font-size: 17px; }
-    }
-
-    @media (max-width: 640px) {
-      nav { display: grid; grid-template-columns: repeat(6, 1fr); }
-      nav a { padding: 8px 4px; text-align: center; }
-      nav .nav-home { grid-area: 1 / 1 / 2 / 4; }
-      nav .nav-cv { grid-area: 1 / 4 / 2 / 7; }
-      nav .nav-teaching { grid-area: 2 / 1 / 3 / 3; }
-      nav .nav-research { grid-area: 2 / 3 / 3 / 5; }
-      nav .nav-outreach { grid-area: 2 / 5 / 3 / 7; }
-    }
-  </style>
+  <meta name="description" content="Minah Oh, Professor of Mathematics at James Madison University: research in numerical analysis, teaching, and outreach.">
+  <meta name="theme-color" content="#12355B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Inter:wght@400..600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="identity">Minah Oh</div>
-      <nav aria-label="Main navigation">
-        <a class="nav-home" href="index.html">Home</a>
-        <a class="nav-teaching" href="teaching.html">Teaching</a>
-        <a class="nav-research" href="research.html">Research</a>
-        <a class="nav-outreach" href="outreach.html">Outreach</a>
-        <a class="nav-cv" href="cv.html">CV</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">Minah Oh</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="research.html">Research</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="cv.html">CV</a>
       </nav>
-    </header>
-
-    <div class="content">
-      <aside>
-        <img src="minah2.jpg" alt="Portrait of Minah Oh">
-        <h2>Minah Oh, Ph.D.</h2>
-        <p>Professor of Mathematics<br>
-          James Madison University</p>
-        <p class="mailing">Mailing address:<br>
-          Department of Mathematics and Statistics<br>
-          305 Roop Hall MSC 1911<br>
-          James Madison University<br>
-          Harrisonburg, VA 22807</p>
-        <p class="email">Email:<br>
-          ohmx (at) jmu (dot) edu</p>
-      </aside>
-
-      <main class="main">
-        <div class="gallery" aria-label="Places connected with James Madison University">
-          <img src="jmu.jpg" alt="James Madison University">
-          <img src="arboretum.png" alt="JMU Arboretum">
-          <img src="shenandoahNationalPark.png" alt="Shenandoah National Park">
-        </div>
-        <section class="intro">
-          <p class="welcome">Welcome to my website!</p>
-          <p>I am a mathematician specializing in Numerical Analysis, a branch of mathematics that uses math to construct and analyze computer algorithms for meaningful real-world problems. Involving undergraduate students in mathematical research projects as well as providing quality education to them is a significant part of my career.</p>
-          <p>I am involved at the local and national level in helping young girls and women to be successful in their education and career in mathematics, and I also have a passion for popularizing mathematics to the general public. </p>
-          <a class="button" href="minahoh_cv.pdf">View my CV</a>
-        </section>
-      </main>
     </div>
+  </header>
 
-    <footer>Mathematics and Statistics · James Madison University</footer>
-  </div>
+  <main id="main">
+    <section class="band hero">
+      <div class="wrap">
+        <figure class="portrait">
+          <img src="minah2.jpg" alt="Portrait of Minah Oh" width="3024" height="4032">
+        </figure>
+
+        <div class="intro">
+          <p class="greeting">Welcome to my website!</p>
+          <h1>Minah Oh, Ph.D.</h1>
+          <p class="role"><span>Professor of Mathematics</span><span class="sep" aria-hidden="true">·</span><span>James Madison University</span></p>
+          <p>I am a mathematician specializing in Numerical Analysis, a branch of mathematics that uses math to construct and analyze computer algorithms for meaningful real-world problems. Involving undergraduate students in mathematical research projects as well as providing quality education to them is a significant part of my career.</p>
+          <p>I am involved at the local and national level in helping young girls and women to be successful in their education and career in mathematics, and I also have a passion for popularizing mathematics to the general public.</p>
+          <div class="actions">
+            <a class="btn" href="minahoh_cv.pdf">View my CV
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="gallery" role="group" aria-label="Places connected with James Madison University">
+          <figure>
+            <img src="jmu.jpg" alt="James Madison University" loading="lazy">
+            <figcaption>James Madison University</figcaption>
+          </figure>
+          <figure>
+            <img src="arboretum.png" alt="JMU Arboretum" loading="lazy">
+            <figcaption>JMU Arboretum</figcaption>
+          </figure>
+          <figure>
+            <img src="shenandoahNationalPark.png" alt="Shenandoah National Park" loading="lazy">
+            <figcaption>Shenandoah National Park</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <span class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.7-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 15.3 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></svg>
+            </span>
+            <div>
+              <h3>Mailing address</h3>
+              <p>Department of Mathematics and Statistics<br>
+                305 Roop Hall MSC 1911<br>
+                James Madison University<br>
+                Harrisonburg, VA 22807</p>
+            </div>
+          </div>
+          <div class="card contact-card">
+            <span class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
+            </span>
+            <div>
+              <h3>Email</h3>
+              <p>ohmx (at) jmu (dot) edu</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span class="footer-name">Minah Oh</span>
+      <span>Mathematics and Statistics · James Madison University</span>
+    </div>
+  </footer>
 </body>
 </html>

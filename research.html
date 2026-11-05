@@ -4,264 +4,134 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Research | Minah Oh</title>
-  <style>
-    body {
-      margin: 40px auto;
-      max-width: 900px;
-      font-family: Georgia, serif;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    .site-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 32px;
-    }
-
-    .site-nav a {
-      padding: 8px 13px;
-      border: 1px solid #12355b;
-      border-radius: 5px;
-      color: #12355b;
-      font-size: 15px;
-      text-decoration: none;
-      transition: background 160ms ease, color 160ms ease;
-    }
-
-    .site-nav a:hover,
-    .site-nav a:focus {
-      background: #12355b;
-      color: white;
-    }
-
-    h1 {
-      color: maroon;
-      font-size: 32px;
-      margin: 0 0 20px;
-      font-weight: bold;
-    }
-
-    .section {
-      margin-top: 20px;
-    }
-
-    .section-title {
-      font-size: 18pt;
-      font-weight: bold;
-      color: #b26d7c;
-      margin: 0 0 12px;
-    }
-
-    .research-area {
-      padding: 16px 22px;
-      border: 1px solid #d8e1ea;
-      border-radius: 10px;
-      background: #f6f9fc;
-      box-shadow: 0 2px 6px rgba(18, 53, 91, 0.04);
-    }
-
-    .research-area + .research-area {
-      margin-top: 16px;
-    }
-
-    .area-title {
-      font-size: 14pt;
-      font-weight: bold;
-      color: #12355b;
-      margin: 0 0 6px;
-    }
-
-    .topic-list {
-      margin: 0;
-      padding-left: 22px;
-      font-size: 13pt;
-    }
-
-    .topic-list li {
-      margin: 4px 0;
-    }
-
-    .topic-list li::marker {
-      color: #b26d7c;
-    }
-
-    .pub-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .pub {
-      padding: 14px 0;
-      border-bottom: 1px solid #d8e1ea;
-    }
-
-    .pub:first-child {
-      padding-top: 2px;
-    }
-
-    .pub:last-child {
-      padding-bottom: 2px;
-      border-bottom: none;
-    }
-
-    .pub-title {
-      font-size: 13pt;
-      font-weight: bold;
-      color: #12355b;
-      line-height: 1.45;
-    }
-
-    .pub-authors {
-      margin-top: 4px;
-    }
-
-    .pub-venue {
-      color: #555;
-      font-style: italic;
-    }
-
-    .pub-link {
-      display: inline-block;
-      margin-left: 6px;
-      padding: 0 10px;
-      border: 1px solid #12355b;
-      border-radius: 999px;
-      background: white;
-      color: #12355b;
-      font-size: 0.75rem;
-      font-style: normal;
-      font-weight: bold;
-      line-height: 1.6;
-      text-decoration: none;
-      vertical-align: 1px;
-    }
-
-    .pub-link:hover,
-    .pub-link:focus {
-      background: #12355b;
-      color: white;
-    }
-
-    @media (max-width: 640px) {
-      body { padding: 0 12px; }
-      .site-nav { display: grid; grid-template-columns: repeat(6, 1fr); }
-      .site-nav a { padding: 8px 4px; text-align: center; }
-      .site-nav .nav-home { grid-area: 1 / 1 / 2 / 4; }
-      .site-nav .nav-cv { grid-area: 1 / 4 / 2 / 7; }
-      .site-nav .nav-teaching { grid-area: 2 / 1 / 3 / 3; }
-      .site-nav .nav-research { grid-area: 2 / 3 / 3 / 5; }
-      .site-nav .nav-outreach { grid-area: 2 / 5 / 3 / 7; }
-      .research-area { padding: 14px 16px; }
-    }
-  </style>
+  <meta name="theme-color" content="#12355B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Inter:wght@400..600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="site-nav" aria-label="Main navigation">
-    <a class="nav-home" href="index.html">Home</a>
-    <a class="nav-teaching" href="teaching.html">Teaching</a>
-    <a class="nav-research" href="research.html">Research</a>
-    <a class="nav-outreach" href="outreach.html">Outreach</a>
-    <a class="nav-cv" href="cv.html">CV</a>
-  </nav>
-  <main>
-    <h1>Research</h1>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <div class="section">
-      <div class="section-title">Topics</div>
-
-      <div class="research-area">
-        <div class="area-title">Numerical Partial Differential Equations</div>
-        <ul class="topic-list">
-          <li>Finite Element Methods and Finite Element Exterior Calculus</li>
-          <li>Efficient Solution Techniques for Axisymmetric Problems and their Applications</li>
-          <li>Optimal Control Problems</li>
-        </ul>
-      </div>
-
-      <div class="research-area">
-        <div class="area-title">Numerical Linear Algebra</div>
-        <ul class="topic-list">
-          <li>Low-Rank Approximation of Matrices and its Applications in Data Science</li>
-        </ul>
-      </div>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">Minah Oh</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="research.html" aria-current="page">Research</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="cv.html">CV</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="section" style="margin-top: 48px;">
-      <div class="section-title">Publications</div>
-
-      <div class="research-area">
-        <ul class="pub-list">
-          <li class="pub">
-            <div class="pub-title">P<sub>1</sub> Finite Element Methods for a Weighted Elliptic State-Constrained Optimal Control Problem</div>
-            <div class="pub-authors"><strong>M. Oh</strong>, L. Ma, and K. Wang</div>
-            <div class="pub-venue">Numerical Algorithms, Volume 87 (2021), pp. 1–17 <a class="pub-link" href="https://doi.org/10.1007/s11075-020-00955-0">DOI</a></div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">The Hodge Laplacian on Axisymmetric Domains and its Discretization</div>
-            <div class="pub-authors"><strong>M. Oh</strong></div>
-            <div class="pub-venue">IMA Journal of Numerical Analysis, Volume 41 (2021), pp. 1569–1607 <a class="pub-link" href="https://doi.org/10.1093/imanum/draa048">DOI</a></div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">Multigrid in <i>H</i>(div) on Axisymmetric Domains</div>
-            <div class="pub-authors"><strong>M. Oh</strong></div>
-            <div class="pub-venue">Journal of Mathematical Analysis and Applications, Volume 490 (2020), Article 124209 <a class="pub-link" href="https://doi.org/10.1016/j.jmaa.2020.124209">DOI</a></div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">P<sub>1</sub> Finite Element Methods for an Elliptic State-Constrained Distributed Optimal Control Problem with Neumann Boundary Conditions</div>
-            <div class="pub-authors">S. C. Brenner, <strong>M. Oh</strong>, and L.-Y. Sung</div>
-            <div class="pub-venue">Results in Applied Mathematics, Volume 8 (2020), Article 100090 <a class="pub-link" href="https://doi.org/10.1016/j.rinam.2019.100090">DOI</a></div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">A C<sup>0</sup> Interior Penalty Method for Elliptic Distributed Optimal Control Problems in Three Dimensions with Pointwise State Constraints</div>
-            <div class="pub-authors">S. C. Brenner, <strong>M. Oh</strong>, S. Pollock, K. Porwal, M. Schedensack, and N. S. Sharma</div>
-            <div class="pub-venue">Topics in Numerical Partial Differential Equations and Scientific Computing, The IMA Volumes in Mathematics and its Applications, Volume 160 (2016), pp. 1–22 <a class="pub-link" href="https://doi.org/10.1007/978-1-4939-6399-7_1">DOI</a></div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">De Rham Complexes arising from Fourier Finite Element Methods in Axisymmetric Domains</div>
-            <div class="pub-authors"><strong>M. Oh</strong></div>
-            <div class="pub-venue">Computers and Mathematics with Applications, Volume 70 (2015), pp. 2063–2073 <a class="pub-link" href="https://doi.org/10.1016/j.camwa.2015.08.020">DOI</a></div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">Introducing Proofs to Calculus Students</div>
-            <div class="pub-authors"><strong>M. Oh</strong></div>
-            <div class="pub-venue">In Beyond Lecture: Resources and Pedagogical Techniques for Enhancing the Teaching of Proof-Writing Across the Curriculum (R. Schwell, A. Steurer, and J. F. Vasquez, eds.), MAA Notes 85, Mathematical Association of America (2016), pp. 283–290</div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">Integer Invariants of an Incidence Matrix related to Rota’s Basis Conjecture</div>
-            <div class="pub-authors">S. Bittner, J. Ducey, X. Guo, <strong>M. Oh</strong>, and A. Zweber</div>
-            <div class="pub-venue">Missouri Journal of Mathematical Sciences, Volume 29 (2017), pp. 27–32 <a class="pub-link" href="https://doi.org/10.35834/mjms/1488423699">DOI</a></div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">A New Approach to the Analysis of Axisymmetric Problems</div>
-            <div class="pub-authors"><strong>M. Oh</strong></div>
-            <div class="pub-venue">IMA Journal of Numerical Analysis, Volume 34 (2014), pp. 1686–1700 <a class="pub-link" href="https://doi.org/10.1093/imanum/drt054">DOI</a></div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">Commuting Smoothed Projectors in Weighted Norms with an Application to Axisymmetric Maxwell Equations</div>
-            <div class="pub-authors">J. Gopalakrishnan and <strong>M. Oh</strong></div>
-            <div class="pub-venue">Journal of Scientific Computing, Volume 51 (2012), pp. 394–420 <a class="pub-link" href="https://doi.org/10.1007/s10915-011-9513-3">DOI</a></div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">Multigrid in a Weighted Space arising from Axisymmetric Electromagnetics</div>
-            <div class="pub-authors">D. Copeland, J. Gopalakrishnan, and <strong>M. Oh</strong></div>
-            <div class="pub-venue">Mathematics of Computation, Volume 79 (2010), pp. 2033–2058 <a class="pub-link" href="https://doi.org/10.1090/S0025-5718-2010-02384-1">DOI</a></div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">Efficient Solution Techniques for Axisymmetric Problems</div>
-            <div class="pub-authors"><strong>M. Oh</strong></div>
-            <div class="pub-venue">Ph.D. Dissertation, University of Florida (2010) <a class="pub-link" href="http://purl.fcla.edu/fcla/etd/UFE0041576">Link</a></div>
-          </li>
-          <li class="pub">
-            <div class="pub-title">Visual Words, Text Analysis Concepts for Computer Vision</div>
-            <div class="pub-authors">Chen, Kong, <strong>Oh</strong>, Sanan, and Wang (Mentor: Brendt Wohlberg)</div>
-            <div class="pub-venue">IMA Mathematical Modeling in Industry XIII Report (2009)</div>
-          </li>
-        </ul>
+  <main id="main">
+    <section class="band page-head">
+      <div class="wrap">
+        <h1>Research</h1>
       </div>
-    </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="section-title">Topics</h2>
+        <div class="topic-grid">
+          <article class="card topic-card">
+            <h3>Numerical Partial Differential Equations</h3>
+            <ul class="topic-list">
+              <li>Finite Element Methods and Finite Element Exterior Calculus</li>
+              <li>Efficient Solution Techniques for Axisymmetric Problems and their Applications</li>
+              <li>Optimal Control Problems</li>
+              <li>Fast Solvers: Multigrid</li>
+            </ul>
+          </article>
+          <article class="card topic-card">
+            <h3>Numerical Linear Algebra</h3>
+            <ul class="topic-list">
+              <li>Low-Rank Approximation of Matrices and its Applications in Data Science</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="section-title">Selected Publications</h2>
+        <div class="card pub-card">
+          <ol class="pub-list">
+            <li class="pub">
+              <div class="pub-title">P<sub>1</sub> Finite Element Methods for a Weighted Elliptic State-Constrained Optimal Control Problem</div>
+              <div class="pub-authors"><strong>M. Oh</strong>, L. Ma, and K. Wang</div>
+              <div class="pub-venue">Numerical Algorithms, Volume 87 (2021), pp. 1–17 <a class="pub-link" href="https://doi.org/10.1007/s11075-020-00955-0">DOI</a></div>
+            </li>
+            <li class="pub">
+              <div class="pub-title">The Hodge Laplacian on Axisymmetric Domains and its Discretization</div>
+              <div class="pub-authors"><strong>M. Oh</strong></div>
+              <div class="pub-venue">IMA Journal of Numerical Analysis, Volume 41 (2021), pp. 1569–1607 <a class="pub-link" href="https://doi.org/10.1093/imanum/draa048">DOI</a></div>
+            </li>
+            <li class="pub">
+              <div class="pub-title">Multigrid in <i>H</i>(div) on Axisymmetric Domains</div>
+              <div class="pub-authors"><strong>M. Oh</strong></div>
+              <div class="pub-venue">Journal of Mathematical Analysis and Applications, Volume 490 (2020), Article 124209 <a class="pub-link" href="https://doi.org/10.1016/j.jmaa.2020.124209">DOI</a></div>
+            </li>
+            <li class="pub">
+              <div class="pub-title">P<sub>1</sub> Finite Element Methods for an Elliptic State-Constrained Distributed Optimal Control Problem with Neumann Boundary Conditions</div>
+              <div class="pub-authors">S. C. Brenner, <strong>M. Oh</strong>, and L.-Y. Sung</div>
+              <div class="pub-venue">Results in Applied Mathematics, Volume 8 (2020), Article 100090 <a class="pub-link" href="https://doi.org/10.1016/j.rinam.2019.100090">DOI</a></div>
+            </li>
+            <li class="pub">
+              <div class="pub-title">A C<sup>0</sup> Interior Penalty Method for Elliptic Distributed Optimal Control Problems in Three Dimensions with Pointwise State Constraints</div>
+              <div class="pub-authors">S. C. Brenner, <strong>M. Oh</strong>, S. Pollock, K. Porwal, M. Schedensack, and N. S. Sharma</div>
+              <div class="pub-venue">Topics in Numerical Partial Differential Equations and Scientific Computing, The IMA Volumes in Mathematics and its Applications, Volume 160 (2016), pp. 1–22 <a class="pub-link" href="https://doi.org/10.1007/978-1-4939-6399-7_1">DOI</a></div>
+            </li>
+            <li class="pub">
+              <div class="pub-title">De Rham Complexes arising from Fourier Finite Element Methods in Axisymmetric Domains</div>
+              <div class="pub-authors"><strong>M. Oh</strong></div>
+              <div class="pub-venue">Computers and Mathematics with Applications, Volume 70 (2015), pp. 2063–2073 <a class="pub-link" href="https://doi.org/10.1016/j.camwa.2015.08.020">DOI</a></div>
+            </li>
+            <li class="pub">
+              <div class="pub-title">Introducing Proofs to Calculus Students</div>
+              <div class="pub-authors"><strong>M. Oh</strong></div>
+              <div class="pub-venue">In Beyond Lecture: Resources and Pedagogical Techniques for Enhancing the Teaching of Proof-Writing Across the Curriculum (R. Schwell, A. Steurer, and J. F. Vasquez, eds.), MAA Notes 85, Mathematical Association of America (2016), pp. 283–290</div>
+            </li>
+            <li class="pub">
+              <div class="pub-title">Integer Invariants of an Incidence Matrix related to Rota’s Basis Conjecture</div>
+              <div class="pub-authors">S. Bittner, J. Ducey, X. Guo, <strong>M. Oh</strong>, and A. Zweber</div>
+              <div class="pub-venue">Missouri Journal of Mathematical Sciences, Volume 29 (2017), pp. 27–32 <a class="pub-link" href="https://doi.org/10.35834/mjms/1488423699">DOI</a></div>
+            </li>
+            <li class="pub">
+              <div class="pub-title">A New Approach to the Analysis of Axisymmetric Problems</div>
+              <div class="pub-authors"><strong>M. Oh</strong></div>
+              <div class="pub-venue">IMA Journal of Numerical Analysis, Volume 34 (2014), pp. 1686–1700 <a class="pub-link" href="https://doi.org/10.1093/imanum/drt054">DOI</a></div>
+            </li>
+            <li class="pub">
+              <div class="pub-title">Commuting Smoothed Projectors in Weighted Norms with an Application to Axisymmetric Maxwell Equations</div>
+              <div class="pub-authors">J. Gopalakrishnan and <strong>M. Oh</strong></div>
+              <div class="pub-venue">Journal of Scientific Computing, Volume 51 (2012), pp. 394–420 <a class="pub-link" href="https://doi.org/10.1007/s10915-011-9513-3">DOI</a></div>
+            </li>
+            <li class="pub">
+              <div class="pub-title">Multigrid in a Weighted Space arising from Axisymmetric Electromagnetics</div>
+              <div class="pub-authors">D. Copeland, J. Gopalakrishnan, and <strong>M. Oh</strong></div>
+              <div class="pub-venue">Mathematics of Computation, Volume 79 (2010), pp. 2033–2058 <a class="pub-link" href="https://doi.org/10.1090/S0025-5718-2010-02384-1">DOI</a></div>
+            </li>
+            <li class="pub">
+              <div class="pub-title">Efficient Solution Techniques for Axisymmetric Problems</div>
+              <div class="pub-authors"><strong>M. Oh</strong></div>
+              <div class="pub-venue">Ph.D. Dissertation, University of Florida (2010) <a class="pub-link" href="http://purl.fcla.edu/fcla/etd/UFE0041576">Link</a></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span class="footer-name">Minah Oh</span>
+      <span>Mathematics and Statistics · James Madison University</span>
+    </div>
+  </footer>
 </body>
 </html>

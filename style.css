@@ -1,0 +1,1015 @@
+/* ==============================================================
+   Minah Oh · Mathematics — shared stylesheet
+   Used by index, teaching, research, outreach and cv pages.
+   Colors, fonts and sizes are defined once in :root below.
+   ============================================================== */
+
+:root {
+  /* Colors */
+  --ivory: #FAF7F1;       /* page background */
+  --wash: #F3EDE2;        /* banded page headers */
+  --paper: #FFFFFF;       /* cards */
+  --navy: #12355B;        /* headings, links, buttons */
+  --navy-deep: #0B2440;   /* hover state */
+  --ink: #27313B;         /* body text */
+  --muted: #59646F;       /* secondary text */
+  --gold: #B08D57;        /* accents and rules */
+  --gold-ink: #85663A;    /* gold for small text */
+  --line: #E6DECF;        /* hairlines and borders */
+
+  /* Fonts (loaded from Google Fonts in each page's <head>) */
+  --font-display: "Cormorant Garamond", Garamond, "Times New Roman", serif;
+  --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-ui: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* Layout */
+  --wrap: 1100px;
+  --gutter: clamp(20px, 4vw, 40px);
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(18, 53, 91, 0.05), 0 10px 28px rgba(18, 53, 91, 0.07);
+  --shadow-lift: 0 2px 6px rgba(18, 53, 91, 0.08), 0 18px 40px rgba(18, 53, 91, 0.15);
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main { flex: 1 0 auto; }
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--navy);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover { color: var(--navy-deep); }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+h1, h2, h3 { color: var(--navy); }
+
+.wrap {
+  width: min(var(--wrap), calc(100% - 2 * var(--gutter)));
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 12px;
+  z-index: 10;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 12px;
+  color: #fff;
+}
+
+/* ---------- Header and navigation ---------- */
+
+.site-header {
+  border-top: 4px solid var(--navy);
+  border-bottom: 1px solid var(--line);
+  background: var(--ivory);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 84px;
+}
+
+/* The name keeps the script font from the original site */
+.brand {
+  color: var(--navy);
+  font-family: "Apple Chancery", "Brush Script MT", cursive;
+  font-size: 38px;
+  font-style: italic;
+  font-weight: bold;
+  line-height: 1.1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand:hover { color: var(--navy-deep); }
+
+.site-nav {
+  display: flex;
+  gap: 2px;
+}
+
+.site-nav a {
+  position: relative;
+  padding: 11px 14px;
+  border-radius: 8px;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  bottom: 3px;
+  left: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.site-nav a:hover {
+  background: rgba(18, 53, 91, 0.05);
+  color: var(--navy);
+}
+
+.site-nav a:hover::after,
+.site-nav a[aria-current="page"]::after { transform: scaleX(1); }
+
+.site-nav a[aria-current="page"] {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* ---------- Banded headers (home hero and page titles) ---------- */
+
+.band {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: var(--wash);
+}
+
+/* Faint finite-element mesh drawn on the right side of each band */
+.band::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(760px, 68%);
+  background: var(--mesh-light) right center / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to left, #000 30%, transparent);
+  mask-image: linear-gradient(to left, #000 30%, transparent);
+  pointer-events: none;
+}
+
+/* On the home page the mesh sits on the left, behind the portrait */
+.hero::before {
+  right: auto;
+  left: 0;
+  width: min(640px, 50%);
+  background: var(--mesh-hero) left center / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to right, #000 30%, transparent);
+  mask-image: linear-gradient(to right, #000 30%, transparent);
+}
+
+.band > .wrap { position: relative; }
+
+.page-head .wrap { padding: 76px 0 62px; }
+
+.page-head h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(46px, 6vw, 68px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.005em;
+}
+
+.page-head h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin-top: 22px;
+  background: var(--gold);
+}
+
+/* ---------- Sections and shared pieces ---------- */
+
+.section { padding-top: 60px; }
+
+main > .section:last-child { padding-bottom: 92px; }
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 26px;
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.subsection-title {
+  margin: 40px 0 18px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.section-title + .subsection-title { margin-top: 0; }
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: var(--navy);
+  box-shadow: 0 8px 20px rgba(18, 53, 91, 0.22);
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--navy-deep);
+  box-shadow: 0 12px 26px rgba(18, 53, 91, 0.28);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn svg {
+  flex: none;
+  width: 17px;
+  height: 17px;
+}
+
+.icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #F4EEE3;
+  color: var(--navy);
+}
+
+.icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+/* ---------- Home ---------- */
+
+.hero .wrap {
+  display: grid;
+  grid-template-columns: minmax(240px, 350px) 1fr;
+  align-items: center;
+  gap: clamp(44px, 7vw, 92px);
+  padding: 72px 0 84px;
+}
+
+.portrait {
+  position: relative;
+  margin: 0 18px 18px 0;
+}
+
+.portrait::before {
+  content: "";
+  position: absolute;
+  inset: 18px -18px -18px 18px;
+  border: 1.5px solid var(--gold);
+  border-radius: 22px;
+}
+
+.portrait img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 62%;
+  border-radius: 20px;
+  background: var(--line);
+  box-shadow: var(--shadow-lift);
+}
+
+.greeting {
+  margin: 0 0 8px;
+  color: var(--gold-ink);
+  font-family: var(--font-display);
+  font-size: 29px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(50px, 6.4vw, 80px);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+}
+
+.role {
+  margin: 20px 0 28px;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.role .sep {
+  margin: 0 0.6em;
+  color: var(--gold);
+}
+
+.intro > p:not(.greeting):not(.role) {
+  max-width: 62ch;
+  margin: 0 0 16px;
+  font-size: 18.5px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.gallery figure { margin: 0; }
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.gallery figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 30px 32px;
+}
+
+.contact-card h3,
+.label {
+  margin: 0 0 8px;
+  color: var(--gold-ink);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-card p {
+  margin: 0;
+  font-size: 17.5px;
+  line-height: 1.6;
+}
+
+/* ---------- Teaching ---------- */
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+}
+
+.course-card { padding: 28px 30px 30px; }
+
+.course-code {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #EDF1F6;
+  color: var(--navy);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.course-card h3 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+  font-style: italic;
+}
+
+.note svg {
+  flex: none;
+  width: 19px;
+  height: 19px;
+  color: var(--gold);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--navy);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-card:hover {
+  color: var(--navy);
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-3px);
+}
+
+.video-thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(120% 90% at 88% 8%, rgba(176, 141, 87, 0.42), transparent 60%),
+    linear-gradient(140deg, #12355B 0%, #1D4C78 100%);
+}
+
+.video-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--mesh-dark) right center / cover no-repeat;
+}
+
+.video-card:nth-child(3n + 2) .video-thumb::before { background-position: center; }
+.video-card:nth-child(3n + 3) .video-thumb::before { background-position: left center; }
+
+.play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+  border-radius: 50%;
+  background: rgba(250, 247, 241, 0.96);
+  box-shadow: 0 8px 22px rgba(5, 20, 40, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.play svg {
+  width: 18px;
+  height: 18px;
+  margin-left: 3px;
+  fill: var(--navy);
+}
+
+.video-card:hover .play { transform: scale(1.08); }
+
+.video-title {
+  display: block;
+  padding: 14px 16px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ---------- Research ---------- */
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+}
+
+.topic-card { padding: 28px 32px 30px; }
+
+.topic-card h3 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.topic-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topic-list li {
+  position: relative;
+  margin-top: 10px;
+  padding-left: 24px;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.topic-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.58em;
+  left: 2px;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid var(--gold);
+  transform: rotate(45deg);
+}
+
+.pub-card { padding: 6px 40px; }
+
+.pub-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: pub;
+}
+
+.pub {
+  position: relative;
+  padding: 26px 0 26px 68px;
+  border-bottom: 1px solid var(--line);
+  counter-increment: pub;
+}
+
+.pub:last-child { border-bottom: 0; }
+
+.pub::before {
+  content: counter(pub, decimal-leading-zero);
+  position: absolute;
+  top: 25px;
+  left: 0;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.pub-title {
+  color: var(--navy);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.42;
+}
+
+.pub-authors {
+  margin-top: 6px;
+  font-size: 16.5px;
+}
+
+.pub-authors strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.pub-venue {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.pub-link {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 11px;
+  border: 1px solid rgba(18, 53, 91, 0.28);
+  border-radius: 999px;
+  color: var(--navy);
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  vertical-align: 2px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.pub-link:hover {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: #fff;
+}
+
+/* ---------- Outreach ---------- */
+
+.feature {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    "title facts"
+    "text  facts";
+  grid-template-columns: minmax(0, 1fr) 240px;
+  grid-template-rows: auto 1fr;
+  column-gap: 56px;
+  overflow: hidden;
+  padding: 46px 48px 46px 56px;
+}
+
+.feature::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 5px;
+  background: linear-gradient(var(--navy), var(--gold));
+}
+
+.feature h2 {
+  grid-area: title;
+  margin: 0 0 16px;
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.feature p {
+  grid-area: text;
+  max-width: 64ch;
+  margin: 0;
+  font-size: 18.5px;
+}
+
+.facts {
+  grid-area: facts;
+  display: grid;
+  align-content: center;
+  gap: 24px;
+  margin: 0;
+  padding: 6px 0 6px 40px;
+  border-left: 1px solid var(--line);
+  list-style: none;
+}
+
+.fact-value {
+  display: block;
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.fact-label {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ---------- CV ---------- */
+
+.cv-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding: 18px 20px 18px 22px;
+}
+
+.cv-file {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.pdf-frame { overflow: hidden; }
+
+.pdf-frame object {
+  display: block;
+  width: 100%;
+  height: min(1100px, 85vh);
+  min-height: 560px;
+  border: 0;
+}
+
+.pdf-frame object p {
+  margin: 0;
+  padding: 56px 24px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  margin-top: auto;
+  background: var(--navy);
+  color: rgba(250, 247, 241, 0.8);
+  font-family: var(--font-ui);
+  font-size: 14px;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding: 30px 0;
+}
+
+.footer-name {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* ---------- Smaller screens ---------- */
+
+@media (max-width: 1040px) {
+  .video-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .hero .wrap {
+    grid-template-columns: 250px 1fr;
+    gap: 48px;
+    padding: 56px 0 64px;
+  }
+
+  .role .sep { display: none; }
+
+  .role span { display: block; }
+
+  .topic-grid { grid-template-columns: 1fr; }
+
+  .feature {
+    grid-template-areas:
+      "title"
+      "text"
+      "facts";
+    grid-template-columns: 1fr;
+  }
+
+  .facts {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 30px;
+    padding: 24px 0 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  body { font-size: 17px; }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-height: 0;
+    padding: 20px 0 8px;
+  }
+
+  .brand { font-size: 34px; }
+
+  .site-nav {
+    justify-content: space-between;
+    width: calc(100% + 16px);
+    margin-left: -8px;
+  }
+
+  .site-nav a {
+    padding: 11px 8px;
+    font-size: 14.5px;
+  }
+
+  .site-nav a::after {
+    right: 8px;
+    left: 8px;
+  }
+
+  .band::before {
+    width: 100%;
+    opacity: 0.55;
+  }
+
+  .page-head .wrap { padding: 46px 0 40px; }
+
+  .page-head h1::after { margin-top: 18px; }
+
+  .section { padding-top: 44px; }
+
+  main > .section:last-child { padding-bottom: 64px; }
+
+  .section-title {
+    margin-bottom: 20px;
+    font-size: 31px;
+  }
+
+  .hero .wrap {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    padding: 40px 0 52px;
+  }
+
+  .hero::before { display: none; }
+
+  .portrait { max-width: 330px; }
+
+  .greeting { font-size: 25px; }
+
+  .intro > p:not(.greeting):not(.role) { font-size: 17.5px; }
+
+  .gallery,
+  .contact-grid,
+  .course-grid { grid-template-columns: 1fr; }
+
+  .gallery { gap: 22px; }
+
+  .gallery img { aspect-ratio: 16 / 9; }
+
+  .contact-card,
+  .course-card,
+  .topic-card { padding: 24px; }
+
+  .video-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .play {
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+  }
+
+  .play svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .video-title {
+    padding: 11px 13px 14px;
+    font-size: 15px;
+  }
+
+  .pub-card { padding: 4px 22px; }
+
+  .pub { padding: 22px 0 22px 46px; }
+
+  .pub::before {
+    top: 23px;
+    font-size: 23px;
+  }
+
+  .pub-title { font-size: 18px; }
+
+  .feature { padding: 30px 24px 28px 30px; }
+
+  .feature h2 { font-size: 32px; }
+
+  .feature p { font-size: 17.5px; }
+
+  .facts {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .cv-bar {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 0;
+  }
+
+  .cv-bar .btn { justify-content: center; }
+
+  /* Phones can't show an embedded PDF well, so they use the button instead */
+  .pdf-frame { display: none; }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* ---------- Decorative finite-element mesh (generated drawing; no need to edit) ---------- */
+
+:root {
+  --mesh-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 320' preserveAspectRatio='xMaxYMid slice'%3E%3Cpath d='M0 0L56 0M0 0L31 58M0 0L0 97M56 0L112 0M56 0L31 58M56 0L91 42M112 0L168 0M112 0L91 42M112 0L135 58M168 0L224 0M168 0L135 58M168 0L184 56M224 0L280 0M224 0L184 56M224 0L259 48M280 0L336 0M280 0L259 48M280 0L303 43M336 0L392 0M336 0L303 43M336 0L358 47M392 0L448 0M392 0L358 47M392 0L420 50M448 0L504 0M448 0L420 50M448 0L488 56M504 0L560 0M504 0L488 56M504 0L535 61M560 0L616 0M560 0L535 61M560 0L581 40M616 0L581 40M616 0L640 0M31 58L91 42M31 58L0 97M31 58L59 86M91 42L135 58M91 42L59 86M91 42L101 97M135 58L184 56M135 58L101 97M135 58L167 107M184 56L259 48M184 56L167 107M184 56L227 97M259 48L303 43M259 48L227 97M259 48L280 91M303 43L358 47M303 43L280 91M303 43L324 89M358 47L420 50M358 47L324 89M358 47L397 90M420 50L488 56M420 50L397 90M420 50L445 85M488 56L535 61M488 56L445 85M488 56L473 92M488 56L512 88M535 61L581 40M535 61L512 88M535 61L546 107M581 40L616 106M581 40L640 0M581 40L546 107M0 97L59 86M0 97L31 151M0 97L0 194M59 86L101 97M59 86L31 151M59 86L74 147M101 97L167 107M101 97L74 147M101 97L140 155M167 107L227 97M167 107L140 155M167 107L193 148M227 97L280 91M227 97L193 148M227 97L241 143M280 91L324 89M280 91L241 143M280 91L304 137M324 89L397 90M324 89L304 137M324 89L372 143M397 90L445 85M397 90L372 143M397 90L444 119M445 85L444 119M445 85L473 92M616 106L587 139M616 106L618 191M616 106L640 0M616 106L546 107M31 151L74 147M31 151L0 194M31 151L54 184M74 147L140 155M74 147L54 184M74 147L124 187M140 155L193 148M140 155L124 187M140 155L172 189M193 148L241 143M193 148L172 189M193 148L233 198M241 143L304 137M241 143L233 198M241 143L271 202M304 137L372 143M304 137L271 202M304 137L347 204M372 143L347 204M372 143L394 185M372 143L437 158M372 143L444 119M587 139L569 197M587 139L618 191M587 139L563 142M587 139L556 181M587 139L546 107M0 194L54 184M0 194L26 236M0 194L0 291M54 184L124 187M54 184L26 236M54 184L73 252M124 187L172 189M124 187L73 252M124 187L139 244M172 189L233 198M172 189L139 244M172 189L192 249M233 198L271 202M233 198L192 249M233 198L240 239M271 202L347 204M271 202L240 239M271 202L296 233M347 204L394 185M347 204L296 233M347 204L376 246M394 185L440 205M394 185L376 246M394 185L418 243M394 185L437 158M440 205L418 243M440 205L485 239M440 205L488 212M440 205L454 193M440 205L437 158M569 197L618 191M569 197L534 247M569 197L584 243M569 197L556 181M569 197L527 208M618 191L584 243M618 191L627 293M618 191L640 0M618 191L640 320M26 236L73 252M26 236L0 291M26 236L63 301M73 252L139 244M73 252L63 301M73 252L103 302M139 244L192 249M139 244L103 302M139 244L156 297M192 249L240 239M192 249L156 297M192 249L232 282M240 239L296 233M240 239L232 282M240 239L278 299M296 233L376 246M296 233L278 299M296 233L324 294M376 246L418 243M376 246L324 294M376 246L399 291M418 243L485 239M418 243L399 291M418 243L454 284M485 239L534 247M485 239L454 284M485 239L497 288M485 239L527 208M485 239L488 212M534 247L584 243M534 247L497 288M534 247L552 287M534 247L527 208M584 243L552 287M584 243L627 293M0 291L63 301M0 291L0 320M63 301L103 302M63 301L0 320M103 302L156 297M103 302L0 320M156 297L232 282M156 297L278 299M156 297L0 320M232 282L278 299M278 299L324 294M278 299L399 291M278 299L0 320M278 299L640 320M324 294L399 291M399 291L454 284M399 291L497 288M399 291L640 320M454 284L497 288M497 288L552 287M497 288L640 320M552 287L627 293M552 287L640 320M627 293L640 320M640 0L640 320M0 320L640 320M494 159L490 154M494 159L501 161M494 159L498 167M494 159L488 162M494 159L500 150M490 154L489 147M490 154L488 162M490 154L483 153M490 154L500 150M489 147L493 142M489 147L483 153M489 147L485 143M489 147L500 150M493 142L499 139M493 142L485 143M493 142L492 135M493 142L500 150M499 139L506 141M499 139L492 135M499 139L502 133M499 139L500 150M506 141L510 146M506 141L502 133M506 141L512 138M506 141L500 150M510 146L511 153M510 146L512 138M510 146L517 147M510 146L500 150M511 153L507 158M511 153L517 147M511 153L515 157M511 153L500 150M507 158L501 161M507 158L515 157M507 158L508 165M507 158L500 150M501 161L498 167M501 161L508 165M501 161L500 150M498 167L488 162M498 167L508 165M498 167L500 176M498 167L484 171M488 162L483 153M488 162L484 171M488 162L475 158M483 153L485 143M483 153L475 158M483 153L475 142M485 143L492 135M485 143L475 142M485 143L485 128M492 135L502 133M492 135L485 128M492 135L500 124M502 133L512 138M502 133L500 124M502 133L516 129M512 138L517 147M512 138L525 142M512 138L516 129M517 147L515 157M517 147L525 142M517 147L525 158M515 157L508 165M515 157L525 158M515 157L515 172M508 165L515 172M508 165L500 176M525 142L525 158M525 142L516 129M525 142L538 136M525 142L539 161M525 158L515 172M525 158L539 161M525 158L525 182M515 172L500 176M515 172L525 182M515 172L501 191M500 176L484 171M500 176L501 191M500 176L477 184M484 171L475 158M484 171L462 164M484 171L477 184M475 158L475 142M475 158L462 164M475 158L461 139M475 142L485 128M475 142L461 139M475 142L475 118M485 128L500 124M485 128L475 118M485 128L499 109M500 124L516 129M500 124L499 109M500 124L523 116M516 129L523 116M516 129L538 136M462 164L461 139M462 164L477 184M462 164L454 193M462 164L437 158M461 139L475 118M461 139L437 158M461 139L444 119M475 118L499 109M475 118L444 119M475 118L473 92M499 109L523 116M499 109L473 92M499 109L512 88M523 116L538 136M523 116L512 88M523 116L546 107M538 136L539 161M538 136L563 142M538 136L546 107M539 161L525 182M539 161L563 142M539 161L556 181M525 182L501 191M525 182L556 181M525 182L527 208M501 191L477 184M501 191L527 208M501 191L488 212M477 184L488 212M477 184L454 193M563 142L556 181M563 142L546 107M556 181L527 208M527 208L488 212M488 212L454 193M454 193L437 158M437 158L444 119M444 119L473 92M473 92L512 88M512 88L546 107' fill='none' stroke='%2312355B' stroke-opacity='0.12' stroke-width='1'/%3E%3Cg fill='%23B08D57' fill-opacity='0.5'%3E%3Ccircle cx='31' cy='58' r='1.6'/%3E%3Ccircle cx='91' cy='42' r='1.6'/%3E%3Ccircle cx='135' cy='58' r='1.6'/%3E%3Ccircle cx='184' cy='56' r='1.6'/%3E%3Ccircle cx='259' cy='48' r='1.6'/%3E%3Ccircle cx='303' cy='43' r='1.6'/%3E%3Ccircle cx='358' cy='47' r='1.6'/%3E%3Ccircle cx='420' cy='50' r='1.6'/%3E%3Ccircle cx='488' cy='56' r='1.6'/%3E%3Ccircle cx='535' cy='61' r='1.6'/%3E%3Ccircle cx='581' cy='40' r='1.6'/%3E%3Ccircle cx='59' cy='86' r='1.6'/%3E%3Ccircle cx='101' cy='97' r='1.6'/%3E%3Ccircle cx='167' cy='107' r='1.6'/%3E%3Ccircle cx='227' cy='97' r='1.6'/%3E%3Ccircle cx='280' cy='91' r='1.6'/%3E%3Ccircle cx='324' cy='89' r='1.6'/%3E%3Ccircle cx='397' cy='90' r='1.6'/%3E%3Ccircle cx='445' cy='85' r='1.6'/%3E%3Ccircle cx='616' cy='106' r='1.6'/%3E%3Ccircle cx='31' cy='151' r='1.6'/%3E%3Ccircle cx='74' cy='147' r='1.6'/%3E%3Ccircle cx='140' cy='155' r='1.6'/%3E%3Ccircle cx='193' cy='148' r='1.6'/%3E%3Ccircle cx='241' cy='143' r='1.6'/%3E%3Ccircle cx='304' cy='137' r='1.6'/%3E%3Ccircle cx='372' cy='143' r='1.6'/%3E%3Ccircle cx='587' cy='139' r='1.6'/%3E%3Ccircle cx='54' cy='184' r='1.6'/%3E%3Ccircle cx='124' cy='187' r='1.6'/%3E%3Ccircle cx='172' cy='189' r='1.6'/%3E%3Ccircle cx='233' cy='198' r='1.6'/%3E%3Ccircle cx='271' cy='202' r='1.6'/%3E%3Ccircle cx='347' cy='204' r='1.6'/%3E%3Ccircle cx='394' cy='185' r='1.6'/%3E%3Ccircle cx='440' cy='205' r='1.6'/%3E%3Ccircle cx='569' cy='197' r='1.6'/%3E%3Ccircle cx='618' cy='191' r='1.6'/%3E%3Ccircle cx='26' cy='236' r='1.6'/%3E%3Ccircle cx='73' cy='252' r='1.6'/%3E%3Ccircle cx='139' cy='244' r='1.6'/%3E%3Ccircle cx='192' cy='249' r='1.6'/%3E%3Ccircle cx='240' cy='239' r='1.6'/%3E%3Ccircle cx='296' cy='233' r='1.6'/%3E%3Ccircle cx='376' cy='246' r='1.6'/%3E%3Ccircle cx='418' cy='243' r='1.6'/%3E%3Ccircle cx='485' cy='239' r='1.6'/%3E%3Ccircle cx='534' cy='247' r='1.6'/%3E%3Ccircle cx='584' cy='243' r='1.6'/%3E%3Ccircle cx='63' cy='301' r='1.6'/%3E%3Ccircle cx='103' cy='302' r='1.6'/%3E%3Ccircle cx='156' cy='297' r='1.6'/%3E%3Ccircle cx='232' cy='282' r='1.6'/%3E%3Ccircle cx='278' cy='299' r='1.6'/%3E%3Ccircle cx='324' cy='294' r='1.6'/%3E%3Ccircle cx='399' cy='291' r='1.6'/%3E%3Ccircle cx='454' cy='284' r='1.6'/%3E%3Ccircle cx='497' cy='288' r='1.6'/%3E%3Ccircle cx='552' cy='287' r='1.6'/%3E%3Ccircle cx='627' cy='293' r='1.6'/%3E%3Ccircle cx='494' cy='159' r='1.6'/%3E%3Ccircle cx='490' cy='154' r='1.6'/%3E%3Ccircle cx='489' cy='147' r='1.6'/%3E%3Ccircle cx='493' cy='142' r='1.6'/%3E%3Ccircle cx='499' cy='139' r='1.6'/%3E%3Ccircle cx='506' cy='141' r='1.6'/%3E%3Ccircle cx='510' cy='146' r='1.6'/%3E%3Ccircle cx='511' cy='153' r='1.6'/%3E%3Ccircle cx='507' cy='158' r='1.6'/%3E%3Ccircle cx='501' cy='161' r='1.6'/%3E%3Ccircle cx='498' cy='167' r='1.6'/%3E%3Ccircle cx='488' cy='162' r='1.6'/%3E%3Ccircle cx='483' cy='153' r='1.6'/%3E%3Ccircle cx='485' cy='143' r='1.6'/%3E%3Ccircle cx='492' cy='135' r='1.6'/%3E%3Ccircle cx='502' cy='133' r='1.6'/%3E%3Ccircle cx='512' cy='138' r='1.6'/%3E%3Ccircle cx='517' cy='147' r='1.6'/%3E%3Ccircle cx='515' cy='157' r='1.6'/%3E%3Ccircle cx='508' cy='165' r='1.6'/%3E%3Ccircle cx='525' cy='142' r='1.6'/%3E%3Ccircle cx='525' cy='158' r='1.6'/%3E%3Ccircle cx='515' cy='172' r='1.6'/%3E%3Ccircle cx='500' cy='176' r='1.6'/%3E%3Ccircle cx='484' cy='171' r='1.6'/%3E%3Ccircle cx='475' cy='158' r='1.6'/%3E%3Ccircle cx='475' cy='142' r='1.6'/%3E%3Ccircle cx='485' cy='128' r='1.6'/%3E%3Ccircle cx='500' cy='124' r='1.6'/%3E%3Ccircle cx='516' cy='129' r='1.6'/%3E%3Ccircle cx='462' cy='164' r='1.6'/%3E%3Ccircle cx='461' cy='139' r='1.6'/%3E%3Ccircle cx='475' cy='118' r='1.6'/%3E%3Ccircle cx='499' cy='109' r='1.6'/%3E%3Ccircle cx='523' cy='116' r='1.6'/%3E%3Ccircle cx='538' cy='136' r='1.6'/%3E%3Ccircle cx='539' cy='161' r='1.6'/%3E%3Ccircle cx='525' cy='182' r='1.6'/%3E%3Ccircle cx='501' cy='191' r='1.6'/%3E%3Ccircle cx='477' cy='184' r='1.6'/%3E%3Ccircle cx='563' cy='142' r='1.6'/%3E%3Ccircle cx='556' cy='181' r='1.6'/%3E%3Ccircle cx='527' cy='208' r='1.6'/%3E%3Ccircle cx='488' cy='212' r='1.6'/%3E%3Ccircle cx='454' cy='193' r='1.6'/%3E%3Ccircle cx='437' cy='158' r='1.6'/%3E%3Ccircle cx='444' cy='119' r='1.6'/%3E%3Ccircle cx='473' cy='92' r='1.6'/%3E%3Ccircle cx='512' cy='88' r='1.6'/%3E%3Ccircle cx='546' cy='107' r='1.6'/%3E%3Ccircle cx='500' cy='150' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  --mesh-hero: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 900' preserveAspectRatio='xMinYMid slice'%3E%3Cpath d='M0 0L56 0M0 0L19 48M0 0L0 97M56 0L112 0M56 0L19 48M56 0L87 37M112 0L168 0M112 0L87 37M112 0L131 59M168 0L224 0M168 0L131 59M168 0L185 39M224 0L280 0M224 0L185 39M224 0L263 51M280 0L336 0M280 0L263 51M280 0L305 49M336 0L392 0M336 0L305 49M336 0L368 43M392 0L448 0M392 0L368 43M392 0L411 56M448 0L504 0M448 0L411 56M448 0L480 49M504 0L560 0M504 0L480 49M504 0L540 50M560 0L616 0M560 0L540 50M560 0L600 41M616 0L600 41M616 0L640 0M19 48L87 37M19 48L0 97M19 48L57 97M87 37L131 59M87 37L57 97M87 37L92 93M131 59L185 39M131 59L92 93M131 59L130 87M131 59L165 105M185 39L263 51M185 39L233 88M185 39L165 105M263 51L305 49M263 51L233 88M263 51L279 92M305 49L368 43M305 49L279 92M305 49L326 107M368 43L411 56M368 43L326 107M368 43L390 88M411 56L480 49M411 56L390 88M411 56L452 90M480 49L540 50M480 49L452 90M480 49L514 90M540 50L600 41M540 50L514 90M540 50L548 90M600 41L548 90M600 41L612 96M600 41L640 0M0 97L57 97M0 97L38 150M0 97L0 194M57 97L38 150M57 97L64 121M57 97L92 93M233 88L279 92M233 88L241 134M233 88L165 105M233 88L183 141M279 92L326 107M279 92L241 134M279 92L317 148M326 107L390 88M326 107L317 148M326 107L359 141M390 88L452 90M390 88L359 141M390 88L410 137M452 90L514 90M452 90L410 137M452 90L464 154M514 90L548 90M514 90L464 154M514 90L531 136M548 90L612 96M548 90L531 136M548 90L594 138M612 96L594 138M612 96L622 183M612 96L640 0M38 150L0 194M38 150L45 196M38 150L64 121M38 150L57 159M195 150L241 134M195 150L214 182M195 150L183 141M195 150L176 179M241 134L317 148M241 134L214 182M241 134L275 200M241 134L183 141M317 148L359 141M317 148L275 200M317 148L336 203M359 141L410 137M359 141L336 203M359 141L385 189M410 137L464 154M410 137L385 189M410 137L442 206M464 154L531 136M464 154L442 206M464 154L515 190M531 136L594 138M531 136L515 190M531 136L558 189M594 138L558 189M594 138L622 183M0 194L45 196M0 194L17 240M0 194L0 291M45 196L17 240M45 196L78 251M45 196L75 195M45 196L57 159M214 182L275 200M214 182L200 247M214 182L259 253M214 182L176 179M275 200L336 203M275 200L259 253M275 200L299 246M336 203L385 189M336 203L299 246M336 203L355 241M385 189L442 206M385 189L355 241M385 189L427 252M442 206L515 190M442 206L427 252M442 206L482 231M515 190L558 189M515 190L482 231M515 190L529 234M558 189L622 183M558 189L529 234M558 189L600 234M622 183L600 234M622 183L626 282M622 183L640 0M17 240L78 251M17 240L0 291M17 240L50 287M78 251L146 244M78 251L50 287M78 251L101 300M78 251L110 213M78 251L75 195M146 244L200 247M146 244L101 300M146 244L171 283M146 244L148 207M146 244L110 213M200 247L259 253M200 247L171 283M200 247L224 281M200 247L176 179M200 247L148 207M259 253L299 246M259 253L224 281M259 253L283 284M299 246L355 241M299 246L283 284M299 246L325 281M355 241L427 252M355 241L325 281M355 241L393 294M427 252L482 231M427 252L393 294M427 252L444 295M482 231L529 234M482 231L444 295M482 231L500 282M529 234L600 234M529 234L500 282M529 234L555 288M600 234L555 288M600 234L626 282M0 291L50 287M0 291L18 341M0 291L0 388M50 287L101 300M50 287L18 341M50 287L95 350M101 300L171 283M101 300L95 350M101 300L145 329M171 283L224 281M171 283L145 329M171 283L204 344M224 281L283 284M224 281L204 344M224 281L243 339M283 284L325 281M283 284L243 339M283 284L297 347M325 281L393 294M325 281L297 347M325 281L369 347M393 294L444 295M393 294L369 347M393 294L426 334M444 295L500 282M444 295L426 334M444 295L483 333M500 282L555 288M500 282L483 333M500 282L523 337M555 288L626 282M555 288L523 337M555 288L588 334M626 282L588 334M626 282L623 391M626 282L628 474M626 282L640 0M18 341L95 350M18 341L0 388M18 341L59 390M95 350L145 329M95 350L59 390M95 350L106 391M145 329L204 344M145 329L106 391M145 329L164 394M204 344L243 339M204 344L164 394M204 344L219 395M243 339L297 347M243 339L219 395M243 339L278 389M297 347L369 347M297 347L278 389M297 347L340 388M369 347L426 334M369 347L340 388M369 347L386 400M426 334L483 333M426 334L386 400M426 334L438 384M483 333L523 337M483 333L438 384M483 333L505 376M523 337L588 334M523 337L505 376M523 337L551 395M588 334L551 395M588 334L623 391M0 388L59 390M0 388L38 443M0 388L0 485M59 390L106 391M59 390L38 443M59 390L79 440M106 391L164 394M106 391L79 440M106 391L136 443M164 394L219 395M164 394L136 443M164 394L193 428M219 395L278 389M219 395L193 428M219 395L261 441M278 389L340 388M278 389L261 441M278 389L314 438M340 388L386 400M340 388L314 438M340 388L371 435M386 400L438 384M386 400L371 435M386 400L422 426M438 384L505 376M438 384L422 426M438 384L477 444M505 376L551 395M505 376L477 444M505 376L537 444M551 395L623 391M551 395L537 444M551 395L588 446M623 391L588 446M623 391L628 474M38 443L79 440M38 443L0 485M38 443L46 494M79 440L136 443M79 440L46 494M79 440L109 475M136 443L193 428M136 443L109 475M136 443L171 484M193 428L261 441M193 428L171 484M193 428L222 494M261 441L314 438M261 441L222 494M261 441L271 488M314 438L371 435M314 438L271 488M314 438L334 486M371 435L422 426M371 435L334 486M371 435L392 476M422 426L477 444M422 426L392 476M422 426L448 494M477 444L537 444M477 444L448 494M477 444L496 473M537 444L588 446M537 444L496 473M537 444L549 484M588 446L549 484M588 446L628 474M0 485L46 494M0 485L40 534M0 485L0 582M46 494L109 475M46 494L40 534M46 494L75 531M109 475L171 484M109 475L75 531M109 475L133 539M171 484L222 494M171 484L133 539M171 484L197 528M222 494L271 488M222 494L197 528M222 494L246 542M271 488L334 486M271 488L246 542M271 488L315 532M334 486L392 476M334 486L315 532M334 486L362 539M392 476L448 494M392 476L362 539M392 476L432 523M448 494L496 473M448 494L432 523M448 494L468 530M496 473L549 484M496 473L468 530M496 473L532 523M549 484L628 474M549 484L532 523M549 484L577 527M628 474L577 527M628 474L615 573M628 474L614 676M628 474L640 0M628 474L640 900M40 534L75 531M40 534L0 582M40 534L53 588M75 531L133 539M75 531L53 588M75 531L115 570M133 539L197 528M133 539L115 570M133 539L157 581M197 528L246 542M197 528L157 581M197 528L233 592M246 542L315 532M246 542L233 592M246 542L277 591M315 532L362 539M315 532L277 591M315 532L347 580M362 539L432 523M362 539L347 580M362 539L398 579M432 523L468 530M432 523L398 579M432 523L439 584M468 530L532 523M468 530L439 584M468 530L494 586M532 523L577 527M532 523L494 586M532 523L568 592M577 527L568 592M577 527L615 573M0 582L53 588M0 582L38 640M0 582L0 679M53 588L115 570M53 588L38 640M53 588L96 633M115 570L157 581M115 570L96 633M115 570L144 627M157 581L233 592M157 581L144 627M157 581L188 625M233 592L277 591M233 592L188 625M233 592L257 626M277 591L347 580M277 591L257 626M277 591L313 631M347 580L398 579M347 580L313 631M347 580L363 642M398 579L439 584M398 579L363 642M398 579L412 630M439 584L494 586M439 584L412 630M439 584L468 641M494 586L568 592M494 586L468 641M494 586L532 626M568 592L615 573M568 592L532 626M568 592L580 633M615 573L580 633M615 573L614 676M38 640L96 633M38 640L0 679M38 640L54 670M96 633L144 627M96 633L54 670M96 633L100 676M144 627L188 625M144 627L100 676M144 627L170 679M188 625L257 626M188 625L170 679M188 625L234 689M257 626L313 631M257 626L234 689M257 626L291 686M313 631L363 642M313 631L291 686M313 631L335 680M363 642L412 630M363 642L335 680M363 642L389 676M412 630L468 641M412 630L389 676M412 630L437 686M468 641L532 626M468 641L437 686M468 641L498 667M532 626L580 633M532 626L498 667M532 626L559 684M580 633L559 684M580 633L614 676M0 679L54 670M0 679L32 719M0 679L0 776M54 670L100 676M54 670L32 719M54 670L72 730M100 676L170 679M100 676L72 730M100 676L141 736M170 679L234 689M170 679L141 736M170 679L194 734M234 689L291 686M234 689L194 734M234 689L240 716M291 686L335 680M291 686L240 716M291 686L310 721M335 680L389 676M335 680L310 721M335 680L353 718M389 676L437 686M389 676L353 718M389 676L417 723M437 686L498 667M437 686L417 723M437 686L478 737M498 667L559 684M498 667L478 737M498 667L529 720M559 684L614 676M559 684L529 720M559 684L590 715M614 676L590 715M614 676L614 781M614 676L640 900M32 719L72 730M32 719L0 776M32 719L53 771M72 730L141 736M72 730L53 771M72 730L109 765M141 736L194 734M141 736L109 765M141 736L169 779M194 734L240 716M194 734L169 779M194 734L230 787M240 716L310 721M240 716L230 787M240 716L276 780M310 721L353 718M310 721L276 780M310 721L335 769M353 718L417 723M353 718L335 769M353 718L402 782M417 723L478 737M417 723L402 782M417 723L459 784M478 737L529 720M478 737L459 784M478 737L514 767M529 720L590 715M529 720L514 767M529 720L548 769M590 715L548 769M590 715L614 781M0 776L53 771M0 776L26 825M0 776L0 873M53 771L109 765M53 771L26 825M53 771L90 814M109 765L169 779M109 765L90 814M109 765L144 813M169 779L230 787M169 779L144 813M169 779L190 830M230 787L276 780M230 787L190 830M230 787L257 822M276 780L335 769M276 780L257 822M276 780L303 833M335 769L402 782M335 769L303 833M335 769L358 813M402 782L459 784M402 782L358 813M402 782L414 813M459 784L514 767M459 784L414 813M459 784L484 815M514 767L548 769M514 767L484 815M514 767L544 817M548 769L614 781M548 769L544 817M548 769L583 827M614 781L583 827M614 781L626 880M614 781L640 900M26 825L90 814M26 825L0 873M26 825L51 870M90 814L144 813M90 814L51 870M90 814L102 870M144 813L190 830M144 813L102 870M144 813L156 866M190 830L257 822M190 830L156 866M190 830L234 868M257 822L303 833M257 822L234 868M257 822L274 877M303 833L358 813M303 833L274 877M303 833L345 868M358 813L414 813M358 813L345 868M358 813L389 878M414 813L484 815M414 813L389 878M414 813L455 876M484 815L544 817M484 815L455 876M484 815L496 865M544 817L583 827M544 817L496 865M544 817L566 878M583 827L566 878M583 827L626 880M0 873L51 870M0 873L0 900M51 870L102 870M51 870L0 900M102 870L156 866M102 870L0 900M156 866L234 868M156 866L274 877M156 866L0 900M234 868L274 877M274 877L345 868M274 877L389 878M274 877L0 900M345 868L389 878M389 878L455 876M389 878L0 900M389 878L640 900M455 876L496 865M455 876L566 878M455 876L640 900M496 865L566 878M566 878L626 880M566 878L640 900M626 880L640 900M640 0L640 900M0 900L640 900M110 155L109 149M110 155L115 160M110 155L111 165M110 155L104 157M110 155L120 150M109 149L112 142M109 149L104 157M109 149L103 146M109 149L120 150M112 142L118 139M112 142L103 146M112 142L109 137M112 142L120 150M118 139L125 140M118 139L109 137M118 139L118 133M118 139L120 150M125 140L130 145M125 140L118 133M125 140L129 135M125 140L120 150M130 145L131 151M130 145L129 135M130 145L136 143M130 145L120 150M131 151L128 158M131 151L136 143M131 151L137 154M131 151L120 150M128 158L122 161M128 158L131 163M128 158L137 154M128 158L120 150M122 161L115 160M122 161L131 163M122 161L122 167M122 161L120 150M115 160L122 167M115 160L111 165M115 160L120 150M131 163L122 167M131 163L137 154M131 163L142 164M131 163L130 175M122 167L111 165M122 167L130 175M122 167L113 176M111 165L104 157M111 165L113 176M111 165L100 167M104 157L103 146M104 157L100 167M104 157L94 152M103 146L109 137M103 146L94 152M103 146L98 136M109 137L118 133M109 137L98 136M109 137L110 125M118 133L129 135M118 133L110 125M118 133L127 124M129 135L136 143M129 135L140 133M129 135L127 124M136 143L137 154M136 143L140 133M136 143L146 148M137 154L146 148M137 154L142 164M140 133L146 148M140 133L127 124M140 133L132 111M140 133L152 125M146 148L142 164M146 148L152 125M146 148L161 149M142 164L130 175M142 164L161 149M142 164L154 173M130 175L113 176M130 175L154 173M130 175L134 189M113 176L100 167M113 176L134 189M113 176L108 189M100 167L94 152M100 167L108 189M100 167L88 175M94 152L98 136M94 152L88 175M94 152L79 151M98 136L110 125M98 136L79 151M98 136L86 127M110 125L127 124M110 125L106 111M110 125L86 127M127 124L106 111M127 124L132 111M106 111L132 111M106 111L86 127M106 111L92 93M106 111L130 87M132 111L152 125M132 111L130 87M132 111L165 105M152 125L161 149M152 125L165 105M152 125L183 141M161 149L154 173M161 149L183 141M161 149L176 179M154 173L134 189M154 173L176 179M154 173L148 207M134 189L108 189M134 189L148 207M134 189L110 213M108 189L88 175M108 189L110 213M108 189L75 195M88 175L79 151M88 175L75 195M88 175L57 159M79 151L86 127M79 151L64 121M79 151L57 159M86 127L64 121M86 127L92 93M64 121L92 93M64 121L57 159M92 93L130 87M130 87L165 105M165 105L183 141M183 141L176 179M176 179L148 207M148 207L110 213M110 213L75 195M75 195L57 159' fill='none' stroke='%2312355B' stroke-opacity='0.11' stroke-width='1'/%3E%3Cg fill='%23B08D57' fill-opacity='0.45'%3E%3Ccircle cx='19' cy='48' r='1.6'/%3E%3Ccircle cx='87' cy='37' r='1.6'/%3E%3Ccircle cx='131' cy='59' r='1.6'/%3E%3Ccircle cx='185' cy='39' r='1.6'/%3E%3Ccircle cx='263' cy='51' r='1.6'/%3E%3Ccircle cx='305' cy='49' r='1.6'/%3E%3Ccircle cx='368' cy='43' r='1.6'/%3E%3Ccircle cx='411' cy='56' r='1.6'/%3E%3Ccircle cx='480' cy='49' r='1.6'/%3E%3Ccircle cx='540' cy='50' r='1.6'/%3E%3Ccircle cx='600' cy='41' r='1.6'/%3E%3Ccircle cx='57' cy='97' r='1.6'/%3E%3Ccircle cx='233' cy='88' r='1.6'/%3E%3Ccircle cx='279' cy='92' r='1.6'/%3E%3Ccircle cx='326' cy='107' r='1.6'/%3E%3Ccircle cx='390' cy='88' r='1.6'/%3E%3Ccircle cx='452' cy='90' r='1.6'/%3E%3Ccircle cx='514' cy='90' r='1.6'/%3E%3Ccircle cx='548' cy='90' r='1.6'/%3E%3Ccircle cx='612' cy='96' r='1.6'/%3E%3Ccircle cx='38' cy='150' r='1.6'/%3E%3Ccircle cx='195' cy='150' r='1.6'/%3E%3Ccircle cx='241' cy='134' r='1.6'/%3E%3Ccircle cx='317' cy='148' r='1.6'/%3E%3Ccircle cx='359' cy='141' r='1.6'/%3E%3Ccircle cx='410' cy='137' r='1.6'/%3E%3Ccircle cx='464' cy='154' r='1.6'/%3E%3Ccircle cx='531' cy='136' r='1.6'/%3E%3Ccircle cx='594' cy='138' r='1.6'/%3E%3Ccircle cx='45' cy='196' r='1.6'/%3E%3Ccircle cx='214' cy='182' r='1.6'/%3E%3Ccircle cx='275' cy='200' r='1.6'/%3E%3Ccircle cx='336' cy='203' r='1.6'/%3E%3Ccircle cx='385' cy='189' r='1.6'/%3E%3Ccircle cx='442' cy='206' r='1.6'/%3E%3Ccircle cx='515' cy='190' r='1.6'/%3E%3Ccircle cx='558' cy='189' r='1.6'/%3E%3Ccircle cx='622' cy='183' r='1.6'/%3E%3Ccircle cx='17' cy='240' r='1.6'/%3E%3Ccircle cx='78' cy='251' r='1.6'/%3E%3Ccircle cx='146' cy='244' r='1.6'/%3E%3Ccircle cx='200' cy='247' r='1.6'/%3E%3Ccircle cx='259' cy='253' r='1.6'/%3E%3Ccircle cx='299' cy='246' r='1.6'/%3E%3Ccircle cx='355' cy='241' r='1.6'/%3E%3Ccircle cx='427' cy='252' r='1.6'/%3E%3Ccircle cx='482' cy='231' r='1.6'/%3E%3Ccircle cx='529' cy='234' r='1.6'/%3E%3Ccircle cx='600' cy='234' r='1.6'/%3E%3Ccircle cx='50' cy='287' r='1.6'/%3E%3Ccircle cx='101' cy='300' r='1.6'/%3E%3Ccircle cx='171' cy='283' r='1.6'/%3E%3Ccircle cx='224' cy='281' r='1.6'/%3E%3Ccircle cx='283' cy='284' r='1.6'/%3E%3Ccircle cx='325' cy='281' r='1.6'/%3E%3Ccircle cx='393' cy='294' r='1.6'/%3E%3Ccircle cx='444' cy='295' r='1.6'/%3E%3Ccircle cx='500' cy='282' r='1.6'/%3E%3Ccircle cx='555' cy='288' r='1.6'/%3E%3Ccircle cx='626' cy='282' r='1.6'/%3E%3Ccircle cx='18' cy='341' r='1.6'/%3E%3Ccircle cx='95' cy='350' r='1.6'/%3E%3Ccircle cx='145' cy='329' r='1.6'/%3E%3Ccircle cx='204' cy='344' r='1.6'/%3E%3Ccircle cx='243' cy='339' r='1.6'/%3E%3Ccircle cx='297' cy='347' r='1.6'/%3E%3Ccircle cx='369' cy='347' r='1.6'/%3E%3Ccircle cx='426' cy='334' r='1.6'/%3E%3Ccircle cx='483' cy='333' r='1.6'/%3E%3Ccircle cx='523' cy='337' r='1.6'/%3E%3Ccircle cx='588' cy='334' r='1.6'/%3E%3Ccircle cx='59' cy='390' r='1.6'/%3E%3Ccircle cx='106' cy='391' r='1.6'/%3E%3Ccircle cx='164' cy='394' r='1.6'/%3E%3Ccircle cx='219' cy='395' r='1.6'/%3E%3Ccircle cx='278' cy='389' r='1.6'/%3E%3Ccircle cx='340' cy='388' r='1.6'/%3E%3Ccircle cx='386' cy='400' r='1.6'/%3E%3Ccircle cx='438' cy='384' r='1.6'/%3E%3Ccircle cx='505' cy='376' r='1.6'/%3E%3Ccircle cx='551' cy='395' r='1.6'/%3E%3Ccircle cx='623' cy='391' r='1.6'/%3E%3Ccircle cx='38' cy='443' r='1.6'/%3E%3Ccircle cx='79' cy='440' r='1.6'/%3E%3Ccircle cx='136' cy='443' r='1.6'/%3E%3Ccircle cx='193' cy='428' r='1.6'/%3E%3Ccircle cx='261' cy='441' r='1.6'/%3E%3Ccircle cx='314' cy='438' r='1.6'/%3E%3Ccircle cx='371' cy='435' r='1.6'/%3E%3Ccircle cx='422' cy='426' r='1.6'/%3E%3Ccircle cx='477' cy='444' r='1.6'/%3E%3Ccircle cx='537' cy='444' r='1.6'/%3E%3Ccircle cx='588' cy='446' r='1.6'/%3E%3Ccircle cx='46' cy='494' r='1.6'/%3E%3Ccircle cx='109' cy='475' r='1.6'/%3E%3Ccircle cx='171' cy='484' r='1.6'/%3E%3Ccircle cx='222' cy='494' r='1.6'/%3E%3Ccircle cx='271' cy='488' r='1.6'/%3E%3Ccircle cx='334' cy='486' r='1.6'/%3E%3Ccircle cx='392' cy='476' r='1.6'/%3E%3Ccircle cx='448' cy='494' r='1.6'/%3E%3Ccircle cx='496' cy='473' r='1.6'/%3E%3Ccircle cx='549' cy='484' r='1.6'/%3E%3Ccircle cx='628' cy='474' r='1.6'/%3E%3Ccircle cx='40' cy='534' r='1.6'/%3E%3Ccircle cx='75' cy='531' r='1.6'/%3E%3Ccircle cx='133' cy='539' r='1.6'/%3E%3Ccircle cx='197' cy='528' r='1.6'/%3E%3Ccircle cx='246' cy='542' r='1.6'/%3E%3Ccircle cx='315' cy='532' r='1.6'/%3E%3Ccircle cx='362' cy='539' r='1.6'/%3E%3Ccircle cx='432' cy='523' r='1.6'/%3E%3Ccircle cx='468' cy='530' r='1.6'/%3E%3Ccircle cx='532' cy='523' r='1.6'/%3E%3Ccircle cx='577' cy='527' r='1.6'/%3E%3Ccircle cx='53' cy='588' r='1.6'/%3E%3Ccircle cx='115' cy='570' r='1.6'/%3E%3Ccircle cx='157' cy='581' r='1.6'/%3E%3Ccircle cx='233' cy='592' r='1.6'/%3E%3Ccircle cx='277' cy='591' r='1.6'/%3E%3Ccircle cx='347' cy='580' r='1.6'/%3E%3Ccircle cx='398' cy='579' r='1.6'/%3E%3Ccircle cx='439' cy='584' r='1.6'/%3E%3Ccircle cx='494' cy='586' r='1.6'/%3E%3Ccircle cx='568' cy='592' r='1.6'/%3E%3Ccircle cx='615' cy='573' r='1.6'/%3E%3Ccircle cx='38' cy='640' r='1.6'/%3E%3Ccircle cx='96' cy='633' r='1.6'/%3E%3Ccircle cx='144' cy='627' r='1.6'/%3E%3Ccircle cx='188' cy='625' r='1.6'/%3E%3Ccircle cx='257' cy='626' r='1.6'/%3E%3Ccircle cx='313' cy='631' r='1.6'/%3E%3Ccircle cx='363' cy='642' r='1.6'/%3E%3Ccircle cx='412' cy='630' r='1.6'/%3E%3Ccircle cx='468' cy='641' r='1.6'/%3E%3Ccircle cx='532' cy='626' r='1.6'/%3E%3Ccircle cx='580' cy='633' r='1.6'/%3E%3Ccircle cx='54' cy='670' r='1.6'/%3E%3Ccircle cx='100' cy='676' r='1.6'/%3E%3Ccircle cx='170' cy='679' r='1.6'/%3E%3Ccircle cx='234' cy='689' r='1.6'/%3E%3Ccircle cx='291' cy='686' r='1.6'/%3E%3Ccircle cx='335' cy='680' r='1.6'/%3E%3Ccircle cx='389' cy='676' r='1.6'/%3E%3Ccircle cx='437' cy='686' r='1.6'/%3E%3Ccircle cx='498' cy='667' r='1.6'/%3E%3Ccircle cx='559' cy='684' r='1.6'/%3E%3Ccircle cx='614' cy='676' r='1.6'/%3E%3Ccircle cx='32' cy='719' r='1.6'/%3E%3Ccircle cx='72' cy='730' r='1.6'/%3E%3Ccircle cx='141' cy='736' r='1.6'/%3E%3Ccircle cx='194' cy='734' r='1.6'/%3E%3Ccircle cx='240' cy='716' r='1.6'/%3E%3Ccircle cx='310' cy='721' r='1.6'/%3E%3Ccircle cx='353' cy='718' r='1.6'/%3E%3Ccircle cx='417' cy='723' r='1.6'/%3E%3Ccircle cx='478' cy='737' r='1.6'/%3E%3Ccircle cx='529' cy='720' r='1.6'/%3E%3Ccircle cx='590' cy='715' r='1.6'/%3E%3Ccircle cx='53' cy='771' r='1.6'/%3E%3Ccircle cx='109' cy='765' r='1.6'/%3E%3Ccircle cx='169' cy='779' r='1.6'/%3E%3Ccircle cx='230' cy='787' r='1.6'/%3E%3Ccircle cx='276' cy='780' r='1.6'/%3E%3Ccircle cx='335' cy='769' r='1.6'/%3E%3Ccircle cx='402' cy='782' r='1.6'/%3E%3Ccircle cx='459' cy='784' r='1.6'/%3E%3Ccircle cx='514' cy='767' r='1.6'/%3E%3Ccircle cx='548' cy='769' r='1.6'/%3E%3Ccircle cx='614' cy='781' r='1.6'/%3E%3Ccircle cx='26' cy='825' r='1.6'/%3E%3Ccircle cx='90' cy='814' r='1.6'/%3E%3Ccircle cx='144' cy='813' r='1.6'/%3E%3Ccircle cx='190' cy='830' r='1.6'/%3E%3Ccircle cx='257' cy='822' r='1.6'/%3E%3Ccircle cx='303' cy='833' r='1.6'/%3E%3Ccircle cx='358' cy='813' r='1.6'/%3E%3Ccircle cx='414' cy='813' r='1.6'/%3E%3Ccircle cx='484' cy='815' r='1.6'/%3E%3Ccircle cx='544' cy='817' r='1.6'/%3E%3Ccircle cx='583' cy='827' r='1.6'/%3E%3Ccircle cx='51' cy='870' r='1.6'/%3E%3Ccircle cx='102' cy='870' r='1.6'/%3E%3Ccircle cx='156' cy='866' r='1.6'/%3E%3Ccircle cx='234' cy='868' r='1.6'/%3E%3Ccircle cx='274' cy='877' r='1.6'/%3E%3Ccircle cx='345' cy='868' r='1.6'/%3E%3Ccircle cx='389' cy='878' r='1.6'/%3E%3Ccircle cx='455' cy='876' r='1.6'/%3E%3Ccircle cx='496' cy='865' r='1.6'/%3E%3Ccircle cx='566' cy='878' r='1.6'/%3E%3Ccircle cx='626' cy='880' r='1.6'/%3E%3Ccircle cx='110' cy='155' r='1.6'/%3E%3Ccircle cx='109' cy='149' r='1.6'/%3E%3Ccircle cx='112' cy='142' r='1.6'/%3E%3Ccircle cx='118' cy='139' r='1.6'/%3E%3Ccircle cx='125' cy='140' r='1.6'/%3E%3Ccircle cx='130' cy='145' r='1.6'/%3E%3Ccircle cx='131' cy='151' r='1.6'/%3E%3Ccircle cx='128' cy='158' r='1.6'/%3E%3Ccircle cx='122' cy='161' r='1.6'/%3E%3Ccircle cx='115' cy='160' r='1.6'/%3E%3Ccircle cx='131' cy='163' r='1.6'/%3E%3Ccircle cx='122' cy='167' r='1.6'/%3E%3Ccircle cx='111' cy='165' r='1.6'/%3E%3Ccircle cx='104' cy='157' r='1.6'/%3E%3Ccircle cx='103' cy='146' r='1.6'/%3E%3Ccircle cx='109' cy='137' r='1.6'/%3E%3Ccircle cx='118' cy='133' r='1.6'/%3E%3Ccircle cx='129' cy='135' r='1.6'/%3E%3Ccircle cx='136' cy='143' r='1.6'/%3E%3Ccircle cx='137' cy='154' r='1.6'/%3E%3Ccircle cx='140' cy='133' r='1.6'/%3E%3Ccircle cx='146' cy='148' r='1.6'/%3E%3Ccircle cx='142' cy='164' r='1.6'/%3E%3Ccircle cx='130' cy='175' r='1.6'/%3E%3Ccircle cx='113' cy='176' r='1.6'/%3E%3Ccircle cx='100' cy='167' r='1.6'/%3E%3Ccircle cx='94' cy='152' r='1.6'/%3E%3Ccircle cx='98' cy='136' r='1.6'/%3E%3Ccircle cx='110' cy='125' r='1.6'/%3E%3Ccircle cx='127' cy='124' r='1.6'/%3E%3Ccircle cx='106' cy='111' r='1.6'/%3E%3Ccircle cx='132' cy='111' r='1.6'/%3E%3Ccircle cx='152' cy='125' r='1.6'/%3E%3Ccircle cx='161' cy='149' r='1.6'/%3E%3Ccircle cx='154' cy='173' r='1.6'/%3E%3Ccircle cx='134' cy='189' r='1.6'/%3E%3Ccircle cx='108' cy='189' r='1.6'/%3E%3Ccircle cx='88' cy='175' r='1.6'/%3E%3Ccircle cx='79' cy='151' r='1.6'/%3E%3Ccircle cx='86' cy='127' r='1.6'/%3E%3Ccircle cx='64' cy='121' r='1.6'/%3E%3Ccircle cx='92' cy='93' r='1.6'/%3E%3Ccircle cx='130' cy='87' r='1.6'/%3E%3Ccircle cx='165' cy='105' r='1.6'/%3E%3Ccircle cx='183' cy='141' r='1.6'/%3E%3Ccircle cx='176' cy='179' r='1.6'/%3E%3Ccircle cx='148' cy='207' r='1.6'/%3E%3Ccircle cx='110' cy='213' r='1.6'/%3E%3Ccircle cx='75' cy='195' r='1.6'/%3E%3Ccircle cx='57' cy='159' r='1.6'/%3E%3Ccircle cx='120' cy='150' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  --mesh-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 320' preserveAspectRatio='xMaxYMid slice'%3E%3Cpath d='M0 0L56 0M0 0L31 58M0 0L0 97M56 0L112 0M56 0L31 58M56 0L91 42M112 0L168 0M112 0L91 42M112 0L135 58M168 0L224 0M168 0L135 58M168 0L184 56M224 0L280 0M224 0L184 56M224 0L259 48M280 0L336 0M280 0L259 48M280 0L303 43M336 0L392 0M336 0L303 43M336 0L358 47M392 0L448 0M392 0L358 47M392 0L420 50M448 0L504 0M448 0L420 50M448 0L488 56M504 0L560 0M504 0L488 56M504 0L535 61M560 0L616 0M560 0L535 61M560 0L581 40M616 0L581 40M616 0L640 0M31 58L91 42M31 58L0 97M31 58L59 86M91 42L135 58M91 42L59 86M91 42L101 97M135 58L184 56M135 58L101 97M135 58L167 107M184 56L259 48M184 56L167 107M184 56L227 97M259 48L303 43M259 48L227 97M259 48L280 91M303 43L358 47M303 43L280 91M303 43L324 89M358 47L420 50M358 47L324 89M358 47L397 90M420 50L488 56M420 50L397 90M420 50L445 85M488 56L535 61M488 56L445 85M488 56L473 92M488 56L512 88M535 61L581 40M535 61L512 88M535 61L546 107M581 40L616 106M581 40L640 0M581 40L546 107M0 97L59 86M0 97L31 151M0 97L0 194M59 86L101 97M59 86L31 151M59 86L74 147M101 97L167 107M101 97L74 147M101 97L140 155M167 107L227 97M167 107L140 155M167 107L193 148M227 97L280 91M227 97L193 148M227 97L241 143M280 91L324 89M280 91L241 143M280 91L304 137M324 89L397 90M324 89L304 137M324 89L372 143M397 90L445 85M397 90L372 143M397 90L444 119M445 85L444 119M445 85L473 92M616 106L587 139M616 106L618 191M616 106L640 0M616 106L546 107M31 151L74 147M31 151L0 194M31 151L54 184M74 147L140 155M74 147L54 184M74 147L124 187M140 155L193 148M140 155L124 187M140 155L172 189M193 148L241 143M193 148L172 189M193 148L233 198M241 143L304 137M241 143L233 198M241 143L271 202M304 137L372 143M304 137L271 202M304 137L347 204M372 143L347 204M372 143L394 185M372 143L437 158M372 143L444 119M587 139L569 197M587 139L618 191M587 139L563 142M587 139L556 181M587 139L546 107M0 194L54 184M0 194L26 236M0 194L0 291M54 184L124 187M54 184L26 236M54 184L73 252M124 187L172 189M124 187L73 252M124 187L139 244M172 189L233 198M172 189L139 244M172 189L192 249M233 198L271 202M233 198L192 249M233 198L240 239M271 202L347 204M271 202L240 239M271 202L296 233M347 204L394 185M347 204L296 233M347 204L376 246M394 185L440 205M394 185L376 246M394 185L418 243M394 185L437 158M440 205L418 243M440 205L485 239M440 205L488 212M440 205L454 193M440 205L437 158M569 197L618 191M569 197L534 247M569 197L584 243M569 197L556 181M569 197L527 208M618 191L584 243M618 191L627 293M618 191L640 0M618 191L640 320M26 236L73 252M26 236L0 291M26 236L63 301M73 252L139 244M73 252L63 301M73 252L103 302M139 244L192 249M139 244L103 302M139 244L156 297M192 249L240 239M192 249L156 297M192 249L232 282M240 239L296 233M240 239L232 282M240 239L278 299M296 233L376 246M296 233L278 299M296 233L324 294M376 246L418 243M376 246L324 294M376 246L399 291M418 243L485 239M418 243L399 291M418 243L454 284M485 239L534 247M485 239L454 284M485 239L497 288M485 239L527 208M485 239L488 212M534 247L584 243M534 247L497 288M534 247L552 287M534 247L527 208M584 243L552 287M584 243L627 293M0 291L63 301M0 291L0 320M63 301L103 302M63 301L0 320M103 302L156 297M103 302L0 320M156 297L232 282M156 297L278 299M156 297L0 320M232 282L278 299M278 299L324 294M278 299L399 291M278 299L0 320M278 299L640 320M324 294L399 291M399 291L454 284M399 291L497 288M399 291L640 320M454 284L497 288M497 288L552 287M497 288L640 320M552 287L627 293M552 287L640 320M627 293L640 320M640 0L640 320M0 320L640 320M494 159L490 154M494 159L501 161M494 159L498 167M494 159L488 162M494 159L500 150M490 154L489 147M490 154L488 162M490 154L483 153M490 154L500 150M489 147L493 142M489 147L483 153M489 147L485 143M489 147L500 150M493 142L499 139M493 142L485 143M493 142L492 135M493 142L500 150M499 139L506 141M499 139L492 135M499 139L502 133M499 139L500 150M506 141L510 146M506 141L502 133M506 141L512 138M506 141L500 150M510 146L511 153M510 146L512 138M510 146L517 147M510 146L500 150M511 153L507 158M511 153L517 147M511 153L515 157M511 153L500 150M507 158L501 161M507 158L515 157M507 158L508 165M507 158L500 150M501 161L498 167M501 161L508 165M501 161L500 150M498 167L488 162M498 167L508 165M498 167L500 176M498 167L484 171M488 162L483 153M488 162L484 171M488 162L475 158M483 153L485 143M483 153L475 158M483 153L475 142M485 143L492 135M485 143L475 142M485 143L485 128M492 135L502 133M492 135L485 128M492 135L500 124M502 133L512 138M502 133L500 124M502 133L516 129M512 138L517 147M512 138L525 142M512 138L516 129M517 147L515 157M517 147L525 142M517 147L525 158M515 157L508 165M515 157L525 158M515 157L515 172M508 165L515 172M508 165L500 176M525 142L525 158M525 142L516 129M525 142L538 136M525 142L539 161M525 158L515 172M525 158L539 161M525 158L525 182M515 172L500 176M515 172L525 182M515 172L501 191M500 176L484 171M500 176L501 191M500 176L477 184M484 171L475 158M484 171L462 164M484 171L477 184M475 158L475 142M475 158L462 164M475 158L461 139M475 142L485 128M475 142L461 139M475 142L475 118M485 128L500 124M485 128L475 118M485 128L499 109M500 124L516 129M500 124L499 109M500 124L523 116M516 129L523 116M516 129L538 136M462 164L461 139M462 164L477 184M462 164L454 193M462 164L437 158M461 139L475 118M461 139L437 158M461 139L444 119M475 118L499 109M475 118L444 119M475 118L473 92M499 109L523 116M499 109L473 92M499 109L512 88M523 116L538 136M523 116L512 88M523 116L546 107M538 136L539 161M538 136L563 142M538 136L546 107M539 161L525 182M539 161L563 142M539 161L556 181M525 182L501 191M525 182L556 181M525 182L527 208M501 191L477 184M501 191L527 208M501 191L488 212M477 184L488 212M477 184L454 193M563 142L556 181M563 142L546 107M556 181L527 208M527 208L488 212M488 212L454 193M454 193L437 158M437 158L444 119M444 119L473 92M473 92L512 88M512 88L546 107' fill='none' stroke='%23FAF7F1' stroke-opacity='0.13' stroke-width='1'/%3E%3Cg fill='%23E2C48F' fill-opacity='0.55'%3E%3Ccircle cx='31' cy='58' r='1.6'/%3E%3Ccircle cx='91' cy='42' r='1.6'/%3E%3Ccircle cx='135' cy='58' r='1.6'/%3E%3Ccircle cx='184' cy='56' r='1.6'/%3E%3Ccircle cx='259' cy='48' r='1.6'/%3E%3Ccircle cx='303' cy='43' r='1.6'/%3E%3Ccircle cx='358' cy='47' r='1.6'/%3E%3Ccircle cx='420' cy='50' r='1.6'/%3E%3Ccircle cx='488' cy='56' r='1.6'/%3E%3Ccircle cx='535' cy='61' r='1.6'/%3E%3Ccircle cx='581' cy='40' r='1.6'/%3E%3Ccircle cx='59' cy='86' r='1.6'/%3E%3Ccircle cx='101' cy='97' r='1.6'/%3E%3Ccircle cx='167' cy='107' r='1.6'/%3E%3Ccircle cx='227' cy='97' r='1.6'/%3E%3Ccircle cx='280' cy='91' r='1.6'/%3E%3Ccircle cx='324' cy='89' r='1.6'/%3E%3Ccircle cx='397' cy='90' r='1.6'/%3E%3Ccircle cx='445' cy='85' r='1.6'/%3E%3Ccircle cx='616' cy='106' r='1.6'/%3E%3Ccircle cx='31' cy='151' r='1.6'/%3E%3Ccircle cx='74' cy='147' r='1.6'/%3E%3Ccircle cx='140' cy='155' r='1.6'/%3E%3Ccircle cx='193' cy='148' r='1.6'/%3E%3Ccircle cx='241' cy='143' r='1.6'/%3E%3Ccircle cx='304' cy='137' r='1.6'/%3E%3Ccircle cx='372' cy='143' r='1.6'/%3E%3Ccircle cx='587' cy='139' r='1.6'/%3E%3Ccircle cx='54' cy='184' r='1.6'/%3E%3Ccircle cx='124' cy='187' r='1.6'/%3E%3Ccircle cx='172' cy='189' r='1.6'/%3E%3Ccircle cx='233' cy='198' r='1.6'/%3E%3Ccircle cx='271' cy='202' r='1.6'/%3E%3Ccircle cx='347' cy='204' r='1.6'/%3E%3Ccircle cx='394' cy='185' r='1.6'/%3E%3Ccircle cx='440' cy='205' r='1.6'/%3E%3Ccircle cx='569' cy='197' r='1.6'/%3E%3Ccircle cx='618' cy='191' r='1.6'/%3E%3Ccircle cx='26' cy='236' r='1.6'/%3E%3Ccircle cx='73' cy='252' r='1.6'/%3E%3Ccircle cx='139' cy='244' r='1.6'/%3E%3Ccircle cx='192' cy='249' r='1.6'/%3E%3Ccircle cx='240' cy='239' r='1.6'/%3E%3Ccircle cx='296' cy='233' r='1.6'/%3E%3Ccircle cx='376' cy='246' r='1.6'/%3E%3Ccircle cx='418' cy='243' r='1.6'/%3E%3Ccircle cx='485' cy='239' r='1.6'/%3E%3Ccircle cx='534' cy='247' r='1.6'/%3E%3Ccircle cx='584' cy='243' r='1.6'/%3E%3Ccircle cx='63' cy='301' r='1.6'/%3E%3Ccircle cx='103' cy='302' r='1.6'/%3E%3Ccircle cx='156' cy='297' r='1.6'/%3E%3Ccircle cx='232' cy='282' r='1.6'/%3E%3Ccircle cx='278' cy='299' r='1.6'/%3E%3Ccircle cx='324' cy='294' r='1.6'/%3E%3Ccircle cx='399' cy='291' r='1.6'/%3E%3Ccircle cx='454' cy='284' r='1.6'/%3E%3Ccircle cx='497' cy='288' r='1.6'/%3E%3Ccircle cx='552' cy='287' r='1.6'/%3E%3Ccircle cx='627' cy='293' r='1.6'/%3E%3Ccircle cx='494' cy='159' r='1.6'/%3E%3Ccircle cx='490' cy='154' r='1.6'/%3E%3Ccircle cx='489' cy='147' r='1.6'/%3E%3Ccircle cx='493' cy='142' r='1.6'/%3E%3Ccircle cx='499' cy='139' r='1.6'/%3E%3Ccircle cx='506' cy='141' r='1.6'/%3E%3Ccircle cx='510' cy='146' r='1.6'/%3E%3Ccircle cx='511' cy='153' r='1.6'/%3E%3Ccircle cx='507' cy='158' r='1.6'/%3E%3Ccircle cx='501' cy='161' r='1.6'/%3E%3Ccircle cx='498' cy='167' r='1.6'/%3E%3Ccircle cx='488' cy='162' r='1.6'/%3E%3Ccircle cx='483' cy='153' r='1.6'/%3E%3Ccircle cx='485' cy='143' r='1.6'/%3E%3Ccircle cx='492' cy='135' r='1.6'/%3E%3Ccircle cx='502' cy='133' r='1.6'/%3E%3Ccircle cx='512' cy='138' r='1.6'/%3E%3Ccircle cx='517' cy='147' r='1.6'/%3E%3Ccircle cx='515' cy='157' r='1.6'/%3E%3Ccircle cx='508' cy='165' r='1.6'/%3E%3Ccircle cx='525' cy='142' r='1.6'/%3E%3Ccircle cx='525' cy='158' r='1.6'/%3E%3Ccircle cx='515' cy='172' r='1.6'/%3E%3Ccircle cx='500' cy='176' r='1.6'/%3E%3Ccircle cx='484' cy='171' r='1.6'/%3E%3Ccircle cx='475' cy='158' r='1.6'/%3E%3Ccircle cx='475' cy='142' r='1.6'/%3E%3Ccircle cx='485' cy='128' r='1.6'/%3E%3Ccircle cx='500' cy='124' r='1.6'/%3E%3Ccircle cx='516' cy='129' r='1.6'/%3E%3Ccircle cx='462' cy='164' r='1.6'/%3E%3Ccircle cx='461' cy='139' r='1.6'/%3E%3Ccircle cx='475' cy='118' r='1.6'/%3E%3Ccircle cx='499' cy='109' r='1.6'/%3E%3Ccircle cx='523' cy='116' r='1.6'/%3E%3Ccircle cx='538' cy='136' r='1.6'/%3E%3Ccircle cx='539' cy='161' r='1.6'/%3E%3Ccircle cx='525' cy='182' r='1.6'/%3E%3Ccircle cx='501' cy='191' r='1.6'/%3E%3Ccircle cx='477' cy='184' r='1.6'/%3E%3Ccircle cx='563' cy='142' r='1.6'/%3E%3Ccircle cx='556' cy='181' r='1.6'/%3E%3Ccircle cx='527' cy='208' r='1.6'/%3E%3Ccircle cx='488' cy='212' r='1.6'/%3E%3Ccircle cx='454' cy='193' r='1.6'/%3E%3Ccircle cx='437' cy='158' r='1.6'/%3E%3Ccircle cx='444' cy='119' r='1.6'/%3E%3Ccircle cx='473' cy='92' r='1.6'/%3E%3Ccircle cx='512' cy='88' r='1.6'/%3E%3Ccircle cx='546' cy='107' r='1.6'/%3E%3Ccircle cx='500' cy='150' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+}
