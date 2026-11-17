@@ -576,6 +576,16 @@ main > .section:last-child { padding-bottom: 92px; }
   line-height: 1.4;
 }
 
+.video-sub {
+  display: block;
+  margin-top: 3px;
+  color: var(--gold-ink);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
 /* ---------- Research ---------- */
 
 .topic-grid {
